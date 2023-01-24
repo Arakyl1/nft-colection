@@ -1,0 +1,22 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .bt-base{
+        @apply overflow-hidden cursor-pointer transition-all focus-visible:outline-gray-100 
+        after:absolute after:w-full after:h-full
+        after:bg-white after:top-0 after:left-0 after:opacity-0 hover:after:opacity-30
+        disabled:after:opacity-30 py-4 px-5 rounded-md relative xl:py-3 xl:px-4
+    }
+    .other {
+        @apply md:grid-cols-1
+    }
+    .model-style{
+        @apply h-[70vh] max-w-[943px] w-full lg:w-[calc(100vw-2rem)]
+    }
+    .slader__item {
+        @apply snap-start px-4 xl:px-3 sm:px-2
+    }
+}
