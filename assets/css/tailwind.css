@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -19,4 +20,7 @@
     .slader__item {
         @apply snap-start px-4 xl:px-3 sm:px-2
     }
+}
+*,::after, ::before{
+    font-family: 'DM Sans', sans-serif;
 }

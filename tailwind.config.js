@@ -54,7 +54,7 @@ module.exports = {
 
       'sm': { 'max' : '640px'},
       'xs': { 'max' : '320px'},
-    }
+    },
   },
   plugins: [],
 }
