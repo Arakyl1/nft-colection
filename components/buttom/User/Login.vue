@@ -16,6 +16,7 @@
       v-model="data.password"
     />
     <ButtomStandart
+    @click="loginUser"
     class="bg-rose-500 rounded-full text-lg text-white w-full py-3">
         Войти
     </ButtomStandart>
@@ -38,6 +39,7 @@ const props = defineProps<{
 
 const data = ref<DataUser>(createObject())
 const alertFun = alertContent()
+const { login } = useAuth()
 
 function createObject() {
     return {
@@ -46,22 +48,21 @@ function createObject() {
     }
 }
 
-// async function loginUser() {
-//     if (data.value.username && data.value.password) {
-//         const { login } = useAuth();
-//         try {
-//             const res = await login(data.value)
-//             if (res) {
-//                 props.functionModal()
-//             }
-//         } catch (error) {
-//             console.log(error);
-            
-//         }
-//         return
-//     }
-//     alertFun.updateContent('Проверьте введеные данные')
-// }
+async function loginUser() {
+    if (data.value.username && data.value.password) {
+        const { login } = useAuth();
+        try {
+            const res = await login(data.value)
+            if (res) {
+                props.functionModal()
+            }
+        } catch (error) {
+            console.log(error);
+        }
+        return
+    }
+    alertFun.updateContent('Проверьте введеные данные')
+}
 
 watch(() => props.active, () => {
     data.value = createObject()

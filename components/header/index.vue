@@ -19,10 +19,13 @@
                        <p class="text-white text-lg px-40 mb-8">It has survived not only five centuries, but also the leap into electronic typesetting,
                         remaining essentially unchanged It was popularised in the 1960s</p>
                         <div>
-                            <ButtomStandart class="bg-rose-600 text-lg text-white rounded-full py-3 px-6 mx-4">
+                            <ButtomStandart
+                            class="bg-rose-600 text-lg text-white rounded-full py-3 px-6 mx-4">
                                 Explore Now
                             </ButtomStandart>
-                            <ButtomStandart class=" text-lg text-gray-300 border border-gray-300 rounded-full py-3 px-6 mx-4">
+                            <ButtomStandart
+                            @click="createAccount"
+                            class=" text-lg text-gray-300 border border-gray-300 rounded-full py-3 px-6 mx-4">
                                 Create Account
                             </ButtomStandart>
                         </div>
@@ -42,4 +45,7 @@
 </template>
 <script setup lang="ts">
 
+function createAccount() {
+    window.dispatchEvent(new CustomEvent('createUser'))
+}
 </script>

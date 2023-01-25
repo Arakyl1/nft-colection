@@ -7,13 +7,13 @@
         </ButtomStandart>
     </slot>
     <OtherModalTransition class="h-min w-[450px] sm:w-[calc(100vw-2rem)] z-50" :active="stage">
-        <div class="py-8 px-12 rounded-3xl bg-gradient-to-br from-indigo-500 to-purple-600
-        sm:py-6 sm:px-6">
-            <!-- <template v-if="userData">
+        <div class="py-8 px-12 rounded-3xl bg-gradient-to-br 
+        sm:py-6 sm:px-6" :class="[ userData ? 'to-purple-300 from-white' : 'from-indigo-500 to-purple-600']">
+            <template v-if="userData">
                 <ButtomUserMain/>
             </template>
-            -->
-            <template v-if="true">
+           
+            <template v-else>
                 <h3 class="text-4xl text-center font-medium text-white mb-7"
                 >{{ modalLogin ? 'Авторизация' : 'Регистрация' }}</h3>
                     <ButtomUserLogin v-if="modalLogin" :functionModal="updateStage" :active="stage"/>
@@ -35,5 +35,9 @@ const { stage, updateStage } = ShowContent()
 const modalLogin = ref<boolean>(true)
 const userActiveFun = userActive()
 const { userData } = storeToRefs(userActiveFun)
+//const eventUserCreate = new Event('createUser', { bubbles: true })
+onBeforeMount(() => {
+    window.addEventListener('createUser', updateStage)
+})
 
 </script>

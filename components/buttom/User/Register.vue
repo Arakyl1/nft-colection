@@ -20,12 +20,13 @@
           />
           <input
             type="password"
-            :class="style.input"
-            class="mb-6"
+            :class="[style.input, [ !passwordValid ? 'bg-rose-200': 'bg-indigo-300']]"
+            class="mb-1"
             placeholder="Пароль"
             autocomplete="on"
             v-model="data.password"
           />
+          <label class="text-xs text-white mb-4 block">Используйте цифры, буквы малые и прописные, спец. сим.</label>
           <input
             type="password"
             class="mb-8 "
@@ -34,7 +35,9 @@
             autocomplete="on"
             v-model="data.repeartPassword"
           />
-          <ButtomStandart class="bg-rose-500 rounded-full text-lg text-white w-full py-3">
+          <ButtomStandart
+          @click="createUser"
+          class="bg-rose-500 rounded-full text-lg text-white w-full py-3">
             Зарегистрироватьца
           </ButtomStandart>
         </form>
@@ -52,24 +55,30 @@ interface DataUser {
 const props = withDefaults(defineProps<{ active: boolean}>(), { active: false })
 
 const data = ref<DataUser>(createObject())
-// const { register } = useAuth()
+const { register } = useAuth()
 const alertContentFun = alertContent()
 
 const emailValid = computed(() => {
     return !!data.value.email.match(/[-.\w]+@([\w-]+\.)+[\w-]+/g)
 })
 
-// async function createUser() {
-//   if (emailValid.value) {
-//     const res = await register(JSON.stringify(data.value))
-//     if (res) {
-//       data.value = createObject()
-//     }
-//   } else {
-//     alertContentFun.updateContent('Проверьте введенные параметры')
-//   }
+const passwordValid = computed(() => {
+  return !!data.value.password.match(/[a-z][A-Z][0-9]/g)
+})
+
+async function createUser() {
+  if (emailValid.value) {
+    if (passwordValid.value) {
+      const res = await register(JSON.stringify(data.value))
+      if (res) data.value = createObject()
+    } else {
+      alertContentFun.updateContent('Пароль слишком прост')
+    }
+  } else {
+    alertContentFun.updateContent('Некорректный адрес почты')
+  }
   
-// }
+}
 
 watch(() => props.active, () => {
     data.value = createObject()

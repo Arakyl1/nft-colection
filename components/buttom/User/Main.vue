@@ -20,11 +20,11 @@
                 <div v-else-if="elem.decorLine" class="decor-line"></div>
             </template>
         </div>
-        <!-- <ButtomStandart
-        class="bg-red-500 text-white"
+        <ButtomStandart
+        class="bg-rose-500 text-white py-3 rounded-full px-5"
         @click="logout">
             Выйти
-        </ButtomStandart> -->
+        </ButtomStandart>
     </div>
 </div>
 </template>
@@ -33,8 +33,7 @@ import { userActive } from "@/pinia/store"
 
 const user = userActive()
 const { userData } = storeToRefs(user)
-
-// const { logout } = useAuth()
+const { logout } = useAuth()
 
 const list = [
   { data: ['Корзина'] },

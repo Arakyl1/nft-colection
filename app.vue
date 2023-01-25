@@ -8,6 +8,9 @@
       <Header/>
 
     </div>
+    <Transition name="alert">
+      <OtherElseAlert/>
+    </Transition>
   </div>
 </template>
 
@@ -32,5 +35,16 @@ const route = useRoute()
   height: 100vh;
   transition-delay: 0s;
   opacity: 0.4;
+}
+
+.alert-enter-active,
+.alert-leave-active {
+  transition: all 0.25s ease-out;
+}
+
+.alert-enter-from,
+.alert-leave-to{
+  opacity: 0;
+  transform: translateY(-20px);
 }
 </style>
