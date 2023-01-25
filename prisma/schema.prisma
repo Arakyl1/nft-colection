@@ -1,0 +1,36 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model NFTCard {
+  id Int @id @default(autoincrement())
+  img String
+  prise Int
+  date DateTime @default(now())
+  author User @relation(fields: [authorId], references: [id])
+  authorId Int
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  email   String  
+  name    String?
+  username String @unique
+  password String
+  profileImage String?
+  createAt DateTime @default(now())
+
+  quote String?
+  
+  card NFTCard[]
+  followedBy User[]  @relation("UserFollows")
+  following  User[]  @relation("UserFollows")
+}

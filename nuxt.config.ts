@@ -5,6 +5,10 @@ export default defineNuxtConfig ({
   //   preset: 'vercel-edge',
   // },
   modules: [
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    ['@pinia/nuxt', {
+        autoImports: ['defineStore', 'storeToRefs', 'acceptHMRUpdate'],
+      }
+    ], 
   ],
 })

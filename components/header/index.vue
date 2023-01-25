@@ -1,7 +1,7 @@
 <template>
     <div class="h-screen bg-gradient-to-r from-[#782C9C] to-[#192063] ">
         <div class="max-w-7xl mx-auto px-4 flex flex-col justify-between h-full relative">
-            <HeaderTop class="z-10"/>
+            <HeaderTop class=""/>
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0">
                 <img src="@/assets/img/png/header/bg-1.png" alt="asd" class="opacity-30">
             </div>

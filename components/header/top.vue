@@ -17,9 +17,7 @@
             </menu>
             <div class="grow"></div>
             <div>
-                <ButtomStandart class="text-white bg-rose-600 rounded-full px-6">
-                    Start Collecting
-                </ButtomStandart>
+                <ButtomUser/>
             </div>
         </div>
     </div>

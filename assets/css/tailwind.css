@@ -24,3 +24,9 @@
 *,::after, ::before{
     font-family: 'DM Sans', sans-serif;
 }
+
+.decor-line{
+    width: 100%;
+    height: 1px;
+    background-color: #C9C9C9;
+}
