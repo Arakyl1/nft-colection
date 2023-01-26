@@ -30,7 +30,7 @@ export default defineEventHandler(async(event: H3Event) => {
         username,
         email,
         password,
-        profileImage: "https://ie.wampi.ru/2022/08/02/Ivan_Abramov.png"
+        profileImage: "https://ie.wampi.ru/2023/01/26/avatar.jpg"
     }
 
     try {

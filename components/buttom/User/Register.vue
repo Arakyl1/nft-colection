@@ -63,7 +63,7 @@ const emailValid = computed(() => {
 })
 
 const passwordValid = computed(() => {
-  return !!data.value.password.match(/[a-z][A-Z][0-9]/g)
+  return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/g.test(data.value.password)
 })
 
 async function createUser() {

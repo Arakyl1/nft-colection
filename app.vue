@@ -1,11 +1,14 @@
 <template>
   <div>
     <div
-    class="fixed top-0 left-0 w-full bg-stone-900 z-40 ap0__mask"
+    class="fixed top-0 left-0 w-full bg-stone-900 z-30 ap0__mask"
     :class="[{ active: active }]"
     @click="windowMaskFun.updateActive(false)"></div>
     <div>
       <Header/>
+      <div class="max-w-7xl mx-auto px-4">
+        <NuxtPage/>
+      </div>
       <Footer/>
     </div>
     <Transition name="alert">

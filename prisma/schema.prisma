@@ -29,6 +29,7 @@ model User {
   createAt DateTime @default(now())
 
   quote String?
+  ranting Int @default(0)
   
   card NFTCard[]
   followedBy User[]  @relation("UserFollows")

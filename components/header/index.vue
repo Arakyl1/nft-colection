@@ -1,8 +1,9 @@
 <template>
-    <div class="h-screen bg-gradient-to-r from-[#782C9C] to-[#192063] relative overflow-hidden">
+    <div class="h-screen relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-screen h-screen bg-gradient-to-r from-[#782C9C] to-[#192063] -z-20"></div>
         <div class="max-w-7xl mx-auto px-4 flex flex-col justify-between h-full relative">
-            <HeaderTop class=""/>
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0">
+            <HeaderTop/>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10">
                 <img src="@/assets/img/png/header/bg-1.png" alt="asd" class="opacity-30">
             </div>
             <div class="z-10">
@@ -35,19 +36,22 @@
                 <div class="bg-gradient-to-r to-[#322372] from-[#592889] py-5 px-8">
                     <ul class="flex justify-between items-center">
                         <li v-for="item in 5" :key="item" class="">
-                            <img :src="`/img/svg/icon/${item}.svg`" :alt="item">
+                            <img :src="`/img/svg/icon/${item}.svg`" :alt="`${item}`">
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="absolute top-1/2 -left-2/3 -translate-y-1/2 z-0 h-[200%] ">
+        <div class="absolute top-1/2 -left-2/3 -translate-y-1/2 h-[200%] -z-10">
             <img src="@/assets/img/png/header/bg-2.png" alt="asd" class="opacity-50 -rotate-90 h-full ">
         </div>
     </div>
 </template>
 <script setup lang="ts">
+import { windowMask } from "@/pinia/store";
 
+const windowMaskFun = windowMask()
+const { active } = storeToRefs(windowMaskFun)
 function createAccount() {
     window.dispatchEvent(new CustomEvent('createUser'))
 }

@@ -2,11 +2,14 @@
     <div>
         <div class="flex items-center py-8">
             <div class="flex items-center">
-                <img src="@/assets/img/png/logo.png" alt="logo">
-                <p class="text-xl text-white font-medium ml-4">NFT Gallery</p>
+                <a href="/"
+                class="text-xl text-white font-medium ml-4">
+                    <img src="@/assets/img/png/logo.png" alt="logo">
+                    NFT Gallery
+                </a>
             </div>
             <div class="grow"></div>
-            <menu>
+            <menu >
                 <ul class="flex">
                     <li v-for="item in link" :key="item" class="px-4">
                         <a :href="`${item}`"
@@ -16,7 +19,7 @@
                 </ul>
             </menu>
             <div class="grow"></div>
-            <div>
+            <div >
                 <ButtomUser/>
             </div>
         </div>
