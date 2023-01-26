@@ -6,7 +6,6 @@ export default defineEventHandler(async(event) => {
         return await prismafindMany('user', body)
     } catch (error) {
         console.error(error);
-        
         return {
             statusCode: 404,
             statusMessage: 'Не удалось получить данные'
