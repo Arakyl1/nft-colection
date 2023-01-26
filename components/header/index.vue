@@ -1,5 +1,5 @@
 <template>
-    <div class="h-screen bg-gradient-to-r from-[#782C9C] to-[#192063] ">
+    <div class="h-screen bg-gradient-to-r from-[#782C9C] to-[#192063] relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 flex flex-col justify-between h-full relative">
             <HeaderTop class=""/>
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0">
@@ -40,6 +40,9 @@
                     </ul>
                 </div>
             </div>
+        </div>
+        <div class="absolute top-1/2 -left-2/3 -translate-y-1/2 z-0 h-[200%] ">
+            <img src="@/assets/img/png/header/bg-2.png" alt="asd" class="opacity-50 -rotate-90 h-full ">
         </div>
     </div>
 </template>

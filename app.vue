@@ -6,7 +6,7 @@
     @click="windowMaskFun.updateActive(false)"></div>
     <div>
       <Header/>
-
+      <Footer/>
     </div>
     <Transition name="alert">
       <OtherElseAlert/>
