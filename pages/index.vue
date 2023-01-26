@@ -1,5 +1,6 @@
 <template>
 <div>
+    <MainArt/>
     <MainBestUser/>
 </div>
 </template>

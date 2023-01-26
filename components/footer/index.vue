@@ -1,7 +1,7 @@
 <template>
 <footer>
     <div class="bg-gradient-to-b from-[#1E1E46] to-[#1C0088] relative overflow-hidden">
-        <div class="absolute top-1/2 -left-1/3 -translate-y-1/2 h-[150%] -rotate-90">
+        <div class="absolute top-1/2 -left-1/3 -translate-y-1/2 h-[150%] -rotate-90 z-0">
             <img src="@/assets/img/png/header/bg-2.png" alt="" class="h-full">
         </div>
         <div class="absolute bottom-5 left-4 ">
@@ -10,7 +10,7 @@
         <div class="absolute bottom-5 right-4 ">
             <img src="@/assets/img/png/header/bg-6.png" alt="">
         </div>
-        <div class="max-w-7xl mx-auto px-4">
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
             <div class="py-20">
 
                 <div class="flex">

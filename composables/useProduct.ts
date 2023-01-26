@@ -23,5 +23,22 @@ export default () => {
             console.error(error);
         }
    }
-   return { getUserInfoForCard }
+   const createCardNFT = async (event: Event) => {
+    try {
+        const data = await $fetch('/api/product/create', {
+            method: 'POST',
+            body: event
+        })
+        if ('statusCode' in data) {
+            throw createError({
+                statusCode: data.statusCode,
+                statusMessage: data.statusMessage
+            })
+        }
+        return data
+    } catch (error) {
+        console.error(error);
+    }
+   }
+   return { getUserInfoForCard, createCardNFT }
 }

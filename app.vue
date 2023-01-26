@@ -25,6 +25,9 @@ const userActiveFun = userActive()
 const { active } = storeToRefs(windowMaskFun)
 const { userData} = storeToRefs(userActiveFun)
 const route = useRoute()
+const { initAuth } = useAuth()
+
+onBeforeMount(() => { initAuth()})
 </script>
 
 <style lang="css">
