@@ -44,6 +44,9 @@
                             class="text-xl text-stone-700 px-4">{{ item  }}</li>
                         </ul>
                     </div>
+                    <div>
+                        <p>Photos  Art 3D Art 2D</p>
+                    </div>
                     <ButtomStandart @click="createCard"
                     class="bg-rose-600 text-white text-xl rounded-full px-20"
                     >Create</ButtomStandart>
@@ -100,7 +103,11 @@ async function createCard() {
     if (userData.value) {
         NFTdata.value.authorId = userData.value.id
         if (!validData.value) {
-            await createCardNFT({ data: NFTdata.value })
+            const res = await createCardNFT({ data: NFTdata.value })
+            if (res) {
+                NFTdata.value = createData()
+                inputImage.value = null
+            }
         } else {
             alertContentFun.updateContent('Заполните все поля')
         }

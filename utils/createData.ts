@@ -3,7 +3,7 @@ export function createData():object {
         img: '',
         price: '',
         currency: 'Sel.',
-        authorId: '',
+        authorId: 0,
         attributes: []
     }
 }

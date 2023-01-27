@@ -69,15 +69,14 @@ export const favoriteProduct = defineStore('favoriteProduct', () => {
 export const basketProduct = defineStore('basketProduct', () => {
     
     const basket = ref<any>([])
-    const alertFun = alertContent()
 
-    function addBasketProduct(item: {id: number, quantity: number }) { 
-        if (basket.value.findIndex(el => el.id === item.id) === -1) {
-            basket.value.push(item)
-        } else {
-            alertFun.updateContent('Этот товар уже есть в ващей корзине')
-        }
+    function addBasketProduct(item: object) { 
+        basket.value.push(item)
         mySetItem('basket', basket.value)
+    }
+
+    function findProductInBasket(id:number) {
+        return basket.value.findIndex(el => el.id === id)
     }
 
     function removeBasketProduct(index: number) {
@@ -91,5 +90,5 @@ export const basketProduct = defineStore('basketProduct', () => {
             basket.value = JSON.parse(localStorage)
         }
     })
-    return { basket, addBasketProduct, removeBasketProduct }
+    return { basket, addBasketProduct, removeBasketProduct, findProductInBasket }
 })

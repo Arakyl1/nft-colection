@@ -6,7 +6,7 @@ export default () => {
         alert.updateContent(text)
     }
 
-   const getUserInfoForCard = async (event: Event) => {
+   const getUserInfoForCard = async (event: object) => {
         try {
             const data =  await $fetch('/api/product/cardUser', {
                 method: "POST",
@@ -23,7 +23,25 @@ export default () => {
             console.error(error);
         }
    }
-   const createCardNFT = async (event: Event) => {
+
+   const getNFTCardBySelecCat = async(event: object, name: string) => {
+        try {
+            return await useAsyncData(name, () => $fetch('/api/product/cardNFT', {
+                method: "POST",
+                body: event
+            })) 
+            // if ('statusCode' in data) {
+            //     throw createError({
+            //         statusCode: data.statusCode,
+            //         statusMessage: data.statusMessage
+            //     })
+            // }
+        } catch (error) {
+            console.error(error);
+        }
+   }
+
+   const createCardNFT = async (event: object) => {
     try {
         const data = await $fetch('/api/product/create', {
             method: 'POST',
@@ -35,10 +53,11 @@ export default () => {
                 statusMessage: data.statusMessage
             })
         }
+        updateAlertText('Товар добавлен')
         return data
     } catch (error) {
         console.error(error);
     }
    }
-   return { getUserInfoForCard, createCardNFT }
+   return { getUserInfoForCard, getNFTCardBySelecCat, createCardNFT }
 }

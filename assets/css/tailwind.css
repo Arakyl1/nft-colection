@@ -20,6 +20,9 @@
     .slader__item {
         @apply snap-start px-4 xl:px-3 sm:px-2
     }
+    .header__link {
+        @apply text-lg text-white hover:text-rose-600 hover:underline decoration-rose-600 underline-offset-8 transition-all
+    }
 }
 *,::after, ::before{
     font-family: 'DM Sans', sans-serif;

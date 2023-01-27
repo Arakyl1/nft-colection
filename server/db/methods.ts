@@ -19,3 +19,4 @@ export const prismaUpdate = async(key: string, body: object) => {
 export const prismaDelete = async(key: string, body: object) => {
     return prisma[key].delete(body)
 }
+

@@ -1,12 +1,25 @@
-export function selectUserForCard():object {
+export function selectUserForCard(select?:object):object {
     return {
         select: {
             id: true,
             name: true,
             username: true,
             profileImage: true,
-            ranting: true,
-            card: true
+            ...select
+        },
+        
+    }
+}
+
+export function selectNFTCard(select?:object):object {
+    return {
+        select: {
+            id: true,
+            img: true,
+            price: true,
+            currency: true,
+            quantity: true,
+            ...select
         },
         
     }

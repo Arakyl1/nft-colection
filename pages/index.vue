@@ -1,6 +1,7 @@
 <template>
 <div>
     <MainArt/>
+    <MainGallerCards/>
     <MainBestUser/>
 </div>
 </template>

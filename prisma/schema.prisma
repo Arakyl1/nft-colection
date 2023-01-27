@@ -14,8 +14,12 @@ model NFTCard {
   id Int @id @default(autoincrement())
   img String
   price Int
+  top Boolean @default(false)
+  news Boolean @default(true)
   currency String
+  quantity Int @default(0)
   date DateTime @default(now())
+
   author User @relation(fields: [authorId], references: [id])
   authorId Int
 

@@ -27,7 +27,11 @@ const { userData} = storeToRefs(userActiveFun)
 const route = useRoute()
 const { initAuth } = useAuth()
 
-onBeforeMount(() => { initAuth()})
+onBeforeMount(() => {
+  initAuth()
+  console.log(true);
+    
+})
 </script>
 
 <style lang="css">

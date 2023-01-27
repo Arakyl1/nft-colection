@@ -49,5 +49,11 @@
 <script setup lang="ts">
 const {  getUserInfoForCard  } = useProduct()
 
-const data = await getUserInfoForCard({ orderBy: { ranting: 'asc'}, take: 9, ...selectUserForCard()})
+const data = await getUserInfoForCard({
+    orderBy: { ranting: 'asc'},
+    take: 9,
+    ...selectUserForCard({ ranting: true, card: true })
+})
+
+
 </script>
