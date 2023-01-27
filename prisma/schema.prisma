@@ -23,9 +23,14 @@ model NFTCard {
   author User @relation(fields: [authorId], references: [id])
   authorId Int
 
-  attributes String[]
+  attributes Attributes[]
 }
 
+model Attributes {
+  id Int @id @default(autoincrement())
+  name String
+  nftCardId NFTCard[]
+}
 
 model User {
   id Int @id @default(autoincrement())

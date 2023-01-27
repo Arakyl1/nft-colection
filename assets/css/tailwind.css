@@ -23,6 +23,9 @@
     .header__link {
         @apply text-lg text-white hover:text-rose-600 hover:underline decoration-rose-600 underline-offset-8 transition-all
     }
+    .decor-circle{
+        @apply w-2 h-2 aspect-square bg-white rounded-full inline-block
+    }
 }
 *,::after, ::before{
     font-family: 'DM Sans', sans-serif;

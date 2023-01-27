@@ -25,20 +25,10 @@ export default () => {
    }
 
    const getNFTCardBySelecCat = async(event: object, name: string) => {
-        try {
-            return await useAsyncData(name, () => $fetch('/api/product/cardNFT', {
-                method: "POST",
-                body: event
-            })) 
-            // if ('statusCode' in data) {
-            //     throw createError({
-            //         statusCode: data.statusCode,
-            //         statusMessage: data.statusMessage
-            //     })
-            // }
-        } catch (error) {
-            console.error(error);
-        }
+        return await useAsyncData(name, () => $fetch('/api/product/cardNFT', {
+            method: "POST",
+            body: event
+        }))
    }
 
    const createCardNFT = async (event: object) => {
@@ -59,5 +49,12 @@ export default () => {
         console.error(error);
     }
    }
-   return { getUserInfoForCard, getNFTCardBySelecCat, createCardNFT }
+
+   const searchAttributes = async (event: object, name: string) => {
+        return await useAsyncData(name, () => $fetch('/api/attributes/searchByAttributes', {
+            method: "POST",
+            body: event
+        }))
+   }
+   return { getUserInfoForCard, getNFTCardBySelecCat, createCardNFT, searchAttributes }
 }

@@ -30,7 +30,7 @@ const link = [
     { name: 'Home', link: '/', nuxtLink: true },
     { name: 'Activity', link: '/activity', nuxtLink: false },
     { name: 'Category', link: '/category', nuxtLink: false },
-    { name: 'Blogs', link: '/blogs', nuxtLink: false },
+    { name: 'Blogs', link: '/blogs', nuxtLink: true },
     { name: 'Add', link: '/add', nuxtLink: true }
     ]
 

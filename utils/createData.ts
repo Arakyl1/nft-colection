@@ -4,6 +4,6 @@ export function createData():object {
         price: '',
         currency: 'Sel.',
         authorId: 0,
-        attributes: []
+        attributes: { create: [] }
     }
 }

@@ -1,5 +1,5 @@
 <template>
-<section>
+<section >
     <div>
         <OtherElseSectionHeader>
             <template #top>Live Auction</template>
@@ -22,5 +22,6 @@ const { data, error } = await getNFTCardBySelecCat({
     take: 9,
     ...selectNFTCard({ author: { ...selectUserForCard()} })
 }, 'galleryCard')  
+
 
 </script>
