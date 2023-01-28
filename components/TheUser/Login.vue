@@ -15,11 +15,11 @@
       autocomplete="on"
       v-model="data.password"
     />
-    <ButtomStandart
+    <UIButtomStan
     @click="loginUser"
     class="bg-rose-500 rounded-full text-lg text-white w-full py-3">
         Войти
-    </ButtomStandart>
+    </UIButtomStan>
 </form>
 </template>
 

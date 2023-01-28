@@ -1,35 +1,35 @@
 <template>
-<div class="shadow-lg p-2 flex flex-col">
-        <div class="grow grid grid-cols-2 gap-2">
-            <div v-for="(item, index) in NFTdata" :key="item.id"
-            class="rounded overflow-hidden"
-            :class="[
-                { 'mb-4': index === 0 },
-                { '-mb-4': index === 1 },
-                { '-mt-4': index === 2 },
-                { 'mt-4': index === 3 },
-            ]">
-                <img :src="item.img" :alt="item.id"
-                class="min-h-full min-w-full object-cover">
+    <template v-if="!error">
+
+        <div class="shadow-lg p-2 flex flex-col">
+            <div class="grow grid grid-cols-2 gap-2">
+                <div v-for="(item, index) in NFTdata" :key="item.id" class="rounded overflow-hidden" :class="[
+                    { 'mb-4': index === 0 },
+                    { '-mb-4': index === 1 },
+                    { '-mt-4': index === 2 },
+                    { 'mt-4': index === 3 },
+                ]">
+                    <img :src="item.img" :alt="item.id" class="min-h-full min-w-full object-cover">
+                </div>
+            </div>
+            <div class="flex items-center py-2">
+                <div class="grow">
+                    <p class="font-medium text-xl">{{ tagsSearch }}</p>
+                    <p class="text-sm">{{ attributesArrLength }} Item</p>
+                </div>
+                <div>
+                    <UIButtomStan class="p-0 flex items-center text-rose-600">
+                        View All
+                        <IconArrow class="ml-2" />
+                    </UIButtomStan>
+                </div>
             </div>
         </div>
-        <div class="flex items-center py-2">
-            <div class="grow">
-                <p class="font-medium text-xl">{{ tagsSearch }}</p>
-                <p class="text-sm">{{ attributesArrLength }} Item</p>
-            </div>
-            <div>
-                <ButtomStandart class="p-0 flex items-center text-rose-600">
-                    View All
-                    <IconArrow class="ml-2"/>
-                </ButtomStandart>
-            </div>
-        </div>
-</div>
+    </template>
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ tagsSearch: string}>()
+const props = defineProps<{ tagsSearch: string }>()
 
 const { getNFTCardBySelecCat, searchAttributes } = useProduct()
 
@@ -37,13 +37,13 @@ const { data: NFTdata, error } = await getNFTCardBySelecCat({
     where: { attributes: { some: { name: props.tagsSearch } } },
     take: 4,
     select: { img: true, id: true }
-}, `galleryCategor_${props.tagsSearch}`)  
+}, `galleryCategor_${props.tagsSearch}`)
 
 
 const { data: attributes } = await searchAttributes({
     where: { name: props.tagsSearch },
     include: {
-        nftCardId:{
+        nftCardId: {
             select: {
                 id: true
             }

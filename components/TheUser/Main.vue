@@ -20,11 +20,11 @@
                 <div v-else-if="elem.decorLine" class="decor-line"></div>
             </template>
         </div>
-        <ButtomStandart
+        <UIButtomStan
         class="bg-rose-500 text-white py-3 rounded-full px-5"
         @click="logout">
             Выйти
-        </ButtomStandart>
+        </UIButtomStan>
     </div>
 </div>
 </template>

@@ -24,10 +24,10 @@
                     <div class="flex border border-rose-500 rounded-full overflow-hidden mb-8">
                         <input type="text" class="px-5 py-3 text-xl w-full focus-visible:outline-0"
                         v-model="inputAttributes" placeholder="Добавить атрибут">
-                        <ButtomStandart @click="addAttributes"
+                        <UIButtomStan @click="addAttributes"
                         class="px-12 rounded-none bg-rose-500 text-white">
                             Add
-                        </ButtomStandart>
+                        </UIButtomStan>
                     </div>
                     <div>
                         <ul class="flex flex-wrap">
@@ -38,9 +38,9 @@
                     <div>
                         <p>Photos ,  Art , 3D Art  , Collectibles , Stachu , 2D</p>
                     </div>
-                    <ButtomStandart @click="createCard"
+                    <UIButtomStan @click="createCard"
                     class="bg-rose-600 text-white text-xl rounded-full px-20"
-                    >Create</ButtomStandart>
+                    >Create</UIButtomStan>
                 </form>
             </div>
         </div>
@@ -86,6 +86,5 @@ async function createCard() {
         alertContentFun.updateContent('Чтобы добавить товар, авторизуйтесь')
     }
 }
-
 const resetImage = () => reset.value = !reset.value
 </script>

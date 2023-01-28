@@ -58,9 +58,9 @@
                                 <input type="text"
                                 placeholder="Enter Your Email"
                                 class="rounded-l-lg px-4 border-2 border-r-0 border-gray-300 bg-transparent focus-visible:outline-0 focus-visible:border-rose-300 text-white">
-                                <ButtomStandart class="py-2 bg-rose-600 text-white  rounded-none rounded-r-lg">
+                                <UIButtomStan class="py-2 bg-rose-600 text-white  rounded-none rounded-r-lg">
                                     Subcribe
-                                </ButtomStandart>
+                                </UIButtomStan>
                             </div>
                         </form>
                     </div>

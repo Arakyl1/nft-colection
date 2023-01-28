@@ -35,11 +35,11 @@
             autocomplete="on"
             v-model="data.repeartPassword"
           />
-          <ButtomStandart
+          <UIButtomStan
           @click="createUser"
           class="bg-rose-500 rounded-full text-lg text-white w-full py-3">
             Зарегистрироватьца
-          </ButtomStandart>
+          </UIButtomStan>
         </form>
     </div>
 </template>

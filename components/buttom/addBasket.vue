@@ -1,10 +1,10 @@
 <template>
-    <ButtomStandart
+    <UIButtomStan
     class="w-10/12 rounded-full border border-slate-700 py-1 text-slate-700
     after:content-none hover:bg-rose-500 hover:border-rose-500 hover:text-white transition-all"
     @click="addBasketProduct">
         Price Bid
-    </ButtomStandart>
+    </UIButtomStan>
 </template>
 
 <script setup lang="ts">

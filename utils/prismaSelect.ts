@@ -24,3 +24,17 @@ export function selectNFTCard(select?:object):object {
         
     }
 }
+
+export function selectBlogCard(select?:object):object {
+    return {
+        select: {
+            id: true,
+            img: true,
+            text: true,
+            title: true,
+            date: true,
+            ...select
+        },
+        
+    }
+}

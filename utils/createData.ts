@@ -7,3 +7,13 @@ export function createData():object {
         attributes: { create: [] }
     }
 }
+
+export function createBlogData(select?:object):object {
+    return {
+        img: '',
+        authorId: 0,
+        title: '',
+        text: '',
+        ...select
+    }
+}

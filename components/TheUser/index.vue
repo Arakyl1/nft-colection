@@ -1,23 +1,23 @@
 <template>
     <slot name="buttom" v-bind="{ userData, updateStage }">
-        <ButtomStandart class="text-white bg-rose-600 rounded-full px-6"
+        <UIButtomStan class="text-white bg-rose-600 rounded-full px-6"
         :class="{ 'bg-violet-500': userData}"
         @click="updateStage">
             Start Collecting
-        </ButtomStandart>
+        </UIButtomStan>
     </slot>
     <OtherModalTransition class="h-min w-[450px] sm:w-[calc(100vw-2rem)] z-50" :active="stage">
         <div class="py-8 px-12 rounded-3xl bg-gradient-to-br 
         sm:py-6 sm:px-6" :class="[ userData ? 'to-purple-300 from-white' : 'from-indigo-500 to-purple-600']">
             <template v-if="userData">
-                <ButtomUserMain/>
+                <TheUserMain/>
             </template>
            
             <template v-else>
                 <h3 class="text-4xl text-center font-medium text-white mb-7"
                 >{{ modalLogin ? 'Авторизация' : 'Регистрация' }}</h3>
-                    <ButtomUserLogin v-if="modalLogin" :functionModal="updateStage" :active="stage"/>
-                    <ButtomUserRegister v-else :active="stage"/>
+                    <TheUserLogin v-if="modalLogin" :functionModal="updateStage" :active="stage"/>
+                    <TheUserRegister v-else :active="stage"/>
                 <div class="decor-line mt-6 mb-3"></div>
                 <p class="text-center text-white cursor-pointer"
                 @click="modalLogin = !modalLogin"
@@ -29,7 +29,7 @@
 </template>
 <script setup lang="ts">
 import { userActive } from "@/pinia/store"
-import ShowContent from "~~/utils/ShowContent";
+import ShowContent from "@/utils/ShowContent";
 
 const { stage, updateStage } = ShowContent()
 const modalLogin = ref<boolean>(true)

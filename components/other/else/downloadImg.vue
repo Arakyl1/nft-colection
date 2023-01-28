@@ -1,24 +1,27 @@
 <template>
-<div>
-    <slot>
+    <div>
+
         <form @click="input?.click()">
             <input type="file" accept="image/png, image/jpeg" ref="input" hidden @change="imageChange">
-            <div v-if="!inputImage"
-                class="aspect-square border border-rose-600 border-double bg-purple-200 rounded-3xl flex justify-center items-center">
-                <p class="text-xl text-stone-700 font-medium">Кликните, чтобы добавить фото</p>
+            <div v-if="!inputImage">
+                <slot>
+                    <div
+                        class="aspect-square border border-rose-600 border-double bg-purple-200 rounded-3xl flex justify-center items-center">
+                        <p class="text-xl text-stone-700 font-medium">Кликните, чтобы добавить фото</p>
+                    </div>
+                </slot>
             </div>
             <div v-else>
-                <img :src="inputImage" alt="">
+                <img :src="inputImage" alt="" class="min-w-full min-h-full object-cover">
             </div>
         </form>
-    </slot>
-</div>
+    </div>
 
 </template>
 <script setup lang="ts">
-const props = withDefaults(defineProps<{reset: boolean}>(), { reset: false })
+const props = withDefaults(defineProps<{ reset: boolean }>(), { reset: false })
 const emit = defineEmits<{
-    (e:'linkImg', value: string):void
+    (e: 'linkImg', value: string): void
 }>()
 
 const input = ref<HTMLElement | null>(null)

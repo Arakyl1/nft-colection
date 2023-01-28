@@ -30,6 +30,21 @@ model Attributes {
   id Int @id @default(autoincrement())
   name String
   nftCardId NFTCard[]
+  blogCard BlogCard[]
+}
+
+model BlogCard {
+  id Int @id @default(autoincrement())
+  title String
+  text String
+  img String
+  ranting Int @default(0)
+  date DateTime @default(now())
+  
+  author User @relation(fields: [authorId], references: [id])
+  authorId Int
+
+  attributes Attributes[]
 }
 
 model User {
@@ -44,6 +59,7 @@ model User {
   quote String?
   ranting Int @default(0)
   
+  blogcard BlogCard[]
   card NFTCard[]
   followedBy User[]  @relation("UserFollows")
   following  User[]  @relation("UserFollows")

@@ -17,6 +17,9 @@
     .model-style{
         @apply h-[70vh] max-w-[943px] w-full lg:w-[calc(100vw-2rem)]
     }
+    .slader__container{
+        @apply -mx-4  xl:-mx-3 sm:-mx-2 mb-4
+    }
     .slader__item {
         @apply snap-start px-4 xl:px-3 sm:px-2
     }

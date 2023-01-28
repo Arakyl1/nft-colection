@@ -1,9 +1,9 @@
 <template>
-    <ButtomStandart
+    <UIButtomStan
     class="p-0 after:content-none"
     @click="addProducFavorite">
         <IconLike class="group" :class="[[ favorite.has(id) ? 'icon-rose' : 'icon-black']]"/>
-    </ButtomStandart>
+    </UIButtomStan>
 </template>
 
 <script setup lang="ts">

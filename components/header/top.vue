@@ -19,7 +19,7 @@
             </menu>
             <div class="grow"></div>
             <div >
-                <ButtomUser/>
+                <TheUser/>
             </div>
         </div>
     </div>
