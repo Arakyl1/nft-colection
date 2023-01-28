@@ -5,11 +5,11 @@
     :class="[{ active: active }]"
     @click="windowMaskFun.updateActive(false)"></div>
     <div>
-      <Header/>
+      <TheHeader/>
       <div class="max-w-7xl mx-auto px-4">
         <NuxtPage/>
       </div>
-      <Footer/>
+      <TheFooter/>
     </div>
     <Transition name="alert">
       <OtherElseAlert/>

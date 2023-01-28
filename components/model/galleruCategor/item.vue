@@ -48,7 +48,7 @@
         </template>
         <template v-else>
             <div class="aspect-square flex justify-center items-center">
-                <IconLoader/>
+                <UIIconLoader/>
             </div>
         </template>
        

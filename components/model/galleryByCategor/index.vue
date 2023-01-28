@@ -1,12 +1,11 @@
 <template>
 <section>
     <div>
-        <OtherElseSectionHeader>
-            <template #top>NFT Marketplace</template>
-            <template #title>NFT all Category</template>
-        </OtherElseSectionHeader>
+        <div>
+            <slot name="title"></slot>
+        </div>
         <div class="grid grid-cols-3 gap-8">
-            <MainGalleryCategorItem
+            <Item
             v-for="item in arrTags"
             :key="item"
             :tagsSearch="item"/>
@@ -15,6 +14,7 @@
 </section>
 </template>
 <script setup lang="ts">
+import Item from "./item.vue";
 const arrTags = [
     'Photos', 'Art', '3D Art', 'Collectibles', 'Stachu', '2D'
 ]

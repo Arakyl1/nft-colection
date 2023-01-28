@@ -33,7 +33,7 @@
                             </div>
                             <div class="flex grow">
                                 <div class="grow self-center flex justify-center">
-                                    <IconLoader/>
+                                    <UIIconLoader/>
                                 </div>
                                 <div class="px-2 py-1  aspect-square self-end shadow rounded-full text-xs font-bold"
                                 >{{ item }}</div>

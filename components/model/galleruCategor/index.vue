@@ -1,13 +1,12 @@
 <template>
 <section >
     <div>
-        <OtherElseSectionHeader>
-            <template #top>Live Auction</template>
-            <template #title>NFT Live Auction</template>
-        </OtherElseSectionHeader>
+        <slot name="title">
+
+        </slot>
         <div>
             <div class="grid grid-cols-3 gap-8"> 
-                <MainGalleryItem v-for="item in (data || 9)" :key="item.id" :data="item"/>
+                <Item v-for="item in (data || 9)" :key="item.id" :data="item"/>
             </div>
         </div>
     </div>
@@ -15,6 +14,7 @@
 </template>
 
 <script setup lang="ts">
+import Item from "./item.vue";
 const { getNFTCardBySelecCat } = useProduct()
 
 const { data, error } = await getNFTCardBySelecCat({

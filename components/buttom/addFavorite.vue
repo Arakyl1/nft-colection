@@ -2,7 +2,7 @@
     <UIButtomStan
     class="p-0 after:content-none"
     @click="addProducFavorite">
-        <IconLike class="group" :class="[[ favorite.has(id) ? 'icon-rose' : 'icon-black']]"/>
+        <UIIconLike class="group" :class="[[ favorite.has(id) ? 'icon-rose' : 'icon-black']]"/>
     </UIButtomStan>
 </template>
 

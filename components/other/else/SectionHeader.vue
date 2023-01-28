@@ -1,5 +1,5 @@
 <template>
-    <div class="text-center">
+    <div class="text-center mb-8">
         <p class="text-rose-600 font-medium">
             <slot name="top"></slot>
         </p>

@@ -7,16 +7,18 @@
             <div ref="slader" class="basic__slader slader__container" :class="[containerClass]" @scroll="logItem">
                 <template v-for="(elem, index) in sladerData" :key="index">
                     <template v-if="elem">
-                        <slot name="item" v-bind="{
-                            elem,
-                            prevItem,
-                            nextItem
-                        }"></slot>
+                        <div class="slader__item ">
+                            <slot name="item" v-bind="{
+                                elem,
+                                prevItem,
+                                nextItem
+                            }"></slot>
+                        </div>
                     </template>
                     <template v-else>
                         <div class=" aspect-square slader__item p-4">
                             <div class="flex justify-center items-center shadow-md h-full">
-                                <IconLoader/>
+                                <UIIconLoader />
                             </div>
                         </div>
                     </template>
@@ -27,8 +29,8 @@
                     prevItem, nextItem, indexActiveButton, updateScrolLeftSlader
                 }">
                     <div class="flex justify-center">
-                        <SladerUIButtom class="-scale-x-100" @click="prevItem"/>
-                        <SladerUIButtom @click="nextItem"/>
+                        <ButtomArrow class="-scale-x-100" @click="prevItem" />
+                        <ButtomArrow @click="nextItem" />
                     </div>
                 </slot>
             </div>
@@ -36,6 +38,7 @@
     </div>
 </template>
 <script setup lang="ts">
+import ButtomArrow from "./UI/buttom/arrow.vue";
 interface Props {
     data: [] | null,
     containerClass?: string,
@@ -48,7 +51,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const slader = ref<HTMLElement | null>(null)
 const indexActiveButton = ref<number>(0)
-const sladerData = ref(props.dat ? props.data : [...Array(8)])
+const sladerData = ref(props.data ? props.data : [...Array(8)])
 
 function prevItem() {
     slader.value?.scrollBy({ left: -slader.value?.clientWidth })
