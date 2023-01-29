@@ -5,11 +5,12 @@
     :class="[{ active: active }]"
     @click="updateMask(false)"></div>
     <div>
-      <TheHeader/>
+      <WidgetsTheHeader class="z-40"/>
+      <WidgetsMainHeader/>
       <div class="max-w-7xl mx-auto px-4">
         <NuxtPage/>
       </div>
-      <TheFooter/>
+      <WidgetsTheFotter/>
     </div>
     <Transition name="alert">
       <EntitiesAlert/>

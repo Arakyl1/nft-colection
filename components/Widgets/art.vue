@@ -1,14 +1,6 @@
 <template>
     <div>
-        <SharedSectionHeader class="m-12">
-            <template #title>
-                NFT art, Domain name, Stachu, Collection Gallery
-            </template>
-            <template #bottom>
-                It has survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged
-            </template>
-        </SharedSectionHeader>
+        <slot></slot>
         <div class="grid grid-cols-4 gap-4">
             <div v-for="item in 11" :key="item"
              class="bg-rose-300" :class="[

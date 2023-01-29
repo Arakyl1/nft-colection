@@ -1,6 +1,5 @@
 <template>
-    <template v-if="!error">
-
+    <template v-if="!error || NFTdata">
         <div class="shadow-lg p-2 flex flex-col">
             <div class="grow grid grid-cols-2 gap-2">
                 <div v-for="(item, index) in NFTdata" :key="item.id" class="rounded overflow-hidden" :class="[
@@ -26,8 +25,10 @@
             </div>
         </div>
     </template>
+    <template v-else>
+        <EntitiesItemBase/>
+    </template>
 </template>
-
 <script setup lang="ts">
 const props = defineProps<{ tagsSearch: string }>()
 

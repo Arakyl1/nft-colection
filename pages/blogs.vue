@@ -6,7 +6,7 @@
             </SharedSectionHeader>
             <div class="grid grid-cols-3 gap-8 mb-12">
                 <div>
-                    <OtherElseDownloadImg :reset="reset" @link-img="(e) => { blogData.img = e }" />
+                    <EntitiesDownloadImg :reset="reset" @link-img="(e) => { blogData.img = e }" />
                 </div>
                 <div class="col-start-2 col-end-4">
                     <form class="flex flex-col h-full">

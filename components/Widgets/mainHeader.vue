@@ -1,8 +1,7 @@
 <template>
-    <div class="h-screen relative overflow-hidden">
+    <div class="h-screen relative overflow-hidden" v-if="route.path === '/'">
         <div class="absolute top-0 left-0 w-screen h-screen bg-gradient-to-r from-[#782C9C] to-[#192063] -z-20"></div>
-        <div class="max-w-7xl mx-auto px-4 flex flex-col justify-between h-full relative">
-            <TheHeaderTop/>
+        <div class="max-w-7xl mx-auto px-4 flex flex-col justify-between h-full relative pt-48">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10">
                 <img src="@/assets/img/png/header/bg-1.png" alt="asd" class="opacity-30">
             </div>
@@ -20,15 +19,15 @@
                        <p class="text-white text-lg px-40 mb-8">It has survived not only five centuries, but also the leap into electronic typesetting,
                         remaining essentially unchanged It was popularised in the 1960s</p>
                         <div>
-                            <UIButtomStan
-                            class="bg-rose-600 text-lg text-white rounded-full py-3 px-6 mx-4">
+                            <SharedButtomBase
+                            class="text-gray-300 border border-gray-30 hover:bg-rose-600 mx-8 py-3">
                                 Explore Now
-                            </UIButtomStan>
-                            <UIButtomStan
+                            </SharedButtomBase>
+                            <SharedButtomBase
                             @click="createAccount"
-                            class=" text-lg text-gray-300 border border-gray-300 rounded-full py-3 px-6 mx-4">
+                            class="text-gray-300 border border-gray-30 hover:bg-rose-600 mx-8 py-3">
                                 Create Account
-                            </UIButtomStan>
+                            </SharedButtomBase>
                         </div>
                 </div>
             </div>
@@ -47,7 +46,9 @@
         </div>
     </div>
 </template>
+
 <script setup lang="ts">
+const route = useRoute()
 function createAccount() {
     window.dispatchEvent(new CustomEvent('createUser'))
 }

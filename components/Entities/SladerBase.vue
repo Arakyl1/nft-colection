@@ -6,22 +6,13 @@
             </div>
             <div ref="slader" class="basic__slader slader__container" :class="[containerClass]" @scroll="logItem">
                 <template v-for="(elem, index) in sladerData" :key="index">
-                    <template v-if="elem">
-                        <div class="slader__item ">
-                            <slot name="item" v-bind="{
-                                elem,
-                                prevItem,
-                                nextItem
-                            }"></slot>
-                        </div>
-                    </template>
-                    <template v-else>
-                        <div class=" aspect-square slader__item p-4">
-                            <div class="flex justify-center items-center shadow-md h-full">
-                                <UIIconLoader />
-                            </div>
-                        </div>
-                    </template>
+                    <div class="slader__item ">
+                        <slot name="item" v-bind="{
+                            elem,
+                            prevItem,
+                            nextItem
+                        }"></slot>
+                    </div>
                 </template>
             </div>
             <div>

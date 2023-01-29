@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="h-full shadow-md overflow-hidden flex flex-col">
-            <img :src="data.img" :alt="data.id">
+            <img :src="data.img" alt="image">
             <div class="relative z-0">
                 <div class="absolute top-0 left-0 w-[103%] aspect-[3/1]
                         bg-white text-right origin-top-left -rotate-[8deg] px-8 py-1">{{ transformDate(data.date) }}
@@ -13,15 +13,16 @@
                 <p>{{ data.text }}</p>
             </div>
             <div class="text-center py-4">
-                <SharedButtomBase
-                class="border-slate-700 text-slate-700"
-                >Read More</SharedButtomBase>
+                <SharedButtomBase class="border-slate-700 text-slate-700">Read More</SharedButtomBase>
             </div>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-defineProps<{ data: object }>()
+import { BlogCard } from '@/utils/type';
+
+defineProps<{ data: BlogCard }>()
+
 const transformDate = (date: string) => formatter(temp1('en-US')).format(new Date(date))
 </script>
