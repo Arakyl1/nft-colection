@@ -48,10 +48,6 @@
     </div>
 </template>
 <script setup lang="ts">
-import { windowMask } from "@/pinia/store";
-
-const windowMaskFun = windowMask()
-const { active } = storeToRefs(windowMaskFun)
 function createAccount() {
     window.dispatchEvent(new CustomEvent('createUser'))
 }

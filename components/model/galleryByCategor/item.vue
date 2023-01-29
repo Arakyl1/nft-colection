@@ -18,7 +18,10 @@
                     <p class="text-sm">{{ attributesArrLength }} Item</p>
                 </div>
                 <div>
-                    <ButtomStan/>
+                    <UIButtomStan class="bt-base p-0 flex items-center text-rose-600">
+                        View All
+                        <UIIconArrow class="ml-2" />
+                    </UIButtomStan>
                 </div>
             </div>
         </div>
@@ -26,20 +29,16 @@
 </template>
 
 <script setup lang="ts">
-import ButtomStan from "./UI/buttom/Stan.vue"
-
 const props = defineProps<{ tagsSearch: string }>()
 
-const { getNFTCardBySelecCat, searchAttributes } = useProduct()
-
-const { data: NFTdata, error } = await getNFTCardBySelecCat({
+const { data: NFTdata, error } = await productSearchByCategor({
     where: { attributes: { some: { name: props.tagsSearch } } },
     take: 4,
     select: { img: true, id: true }
 }, `galleryCategor_${props.tagsSearch}`)
 
 
-const { data: attributes } = await searchAttributes({
+const { data: attributes } = await productSearchByAttributes({
     where: { name: props.tagsSearch },
     include: {
         nftCardId: {

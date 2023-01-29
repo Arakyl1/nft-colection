@@ -1,12 +1,12 @@
 <template>
     <section>
         <div>
-            <OtherElseSectionHeader class="mb-12">
+            <SharedSectionHeader class="mb-12">
                 <template #top>Seller</template>
                 <template #title>NFT Best Seller </template>
                 <template #title-span> Last 7 Day</template>
                 <template #bottom>It has survived not only five centuries, but also the leap into</template>
-            </OtherElseSectionHeader>
+            </SharedSectionHeader>
             <div>
                 <div class="grid grid-cols-3 gap-8">
                     <div v-for="(item, index) in (data || 9)" :key="index"
@@ -47,9 +47,8 @@
     </section>
 </template>
 <script setup lang="ts">
-const {  getUserInfoForCard  } = useProduct()
 
-const data = await getUserInfoForCard({
+const data = await productgetTopUser({
     orderBy: { ranting: 'asc'},
     take: 9,
     ...selectUserForCard({ ranting: true, card: true })

@@ -3,7 +3,7 @@
     <div
     class="fixed top-0 left-0 w-full bg-stone-900 z-30 ap0__mask"
     :class="[{ active: active }]"
-    @click="windowMaskFun.updateActive(false)"></div>
+    @click="updateMask(false)"></div>
     <div>
       <TheHeader/>
       <div class="max-w-7xl mx-auto px-4">
@@ -12,25 +12,17 @@
       <TheFooter/>
     </div>
     <Transition name="alert">
-      <OtherElseAlert/>
+      <EntitiesAlert/>
     </Transition>
   </div>
 </template>
 
 <script setup lang="ts">
-import { windowMask, userActive } from "@/pinia/store";
-
-const windowMaskFun = windowMask()
-const userActiveFun = userActive()
-const { active } = storeToRefs(windowMaskFun)
-const { userData} = storeToRefs(userActiveFun)
-const route = useRoute()
 const { initAuth } = useAuth()
+const { active, updateMask } = useWindowMask()
 
 onBeforeMount(() => {
-  initAuth()
-  console.log(true);
-    
+  initAuth()   
 })
 </script>
 

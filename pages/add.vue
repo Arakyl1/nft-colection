@@ -1,10 +1,10 @@
 <template>
     <div class="py-32">
-        <OtherElseSectionHeader>
+        <SharedSectionHeader>
             <template #title>Add NFT</template>
-        </OtherElseSectionHeader>
+        </SharedSectionHeader>
         <div class="grid grid-cols-3 gap-x-8">
-            <OtherElseDownloadImg :reset="reset" @link-img="(e) => { NFTdata.img = e }"/>
+            <EntitiesDownloadImg :reset="reset" @link-img="(e) => { NFTdata.img = e }"/>
             <div class="col-start-2 col-end-4">
                 <form class="text-right">
                     <div class="flex border border-rose-500 rounded-full overflow-hidden mb-8">
@@ -48,12 +48,10 @@
 </template>
 
 <script setup lang="ts">
-import { userActive, alertContent } from "@/pinia/store";
 
-const userActiveFun = userActive()
-const alertContentFun = alertContent()
-const { userData } = storeToRefs(userActiveFun)
-const { createCardNFT } = useProduct()
+const { createAlert } = useAlert()
+const { userData } = useStoreUser()
+
 const select = ref<HTMLElement | null>(null)
 const NFTdata = ref<any>(createData())
 const inputAttributes = ref<string>('')
@@ -74,16 +72,16 @@ async function createCard() {
     if (userData.value) {
         NFTdata.value.authorId = userData.value.id
         if (!validData.value) {
-            const res = await createCardNFT({ data: NFTdata.value })
+            const res = await productCreateCard({ data: NFTdata.value })
             if (res) {
                 NFTdata.value = createData()
                 resetImage()
             }
         } else {
-            alertContentFun.updateContent('Заполните все поля')
+            createAlert('Заполните все поля')
         }
     } else {
-        alertContentFun.updateContent('Чтобы добавить товар, авторизуйтесь')
+        createAlert('Чтобы добавить товар, авторизуйтесь')
     }
 }
 const resetImage = () => reset.value = !reset.value

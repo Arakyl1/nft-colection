@@ -1,6 +1,6 @@
 <template>
     <div>
-        <OtherElseSectionHeader class="m-12">
+        <SharedSectionHeader class="m-12">
             <template #title>
                 NFT art, Domain name, Stachu, Collection Gallery
             </template>
@@ -8,7 +8,7 @@
                 It has survived not only five centuries, but also the leap into
                 electronic typesetting, remaining essentially unchanged
             </template>
-        </OtherElseSectionHeader>
+        </SharedSectionHeader>
         <div class="grid grid-cols-4 gap-4">
             <div v-for="item in 11" :key="item"
              class="bg-rose-300" :class="[

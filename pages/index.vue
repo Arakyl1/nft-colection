@@ -3,27 +3,27 @@
         <MainArt />
         <ModelGalleruCategor>
             <template>
-                <OtherElseSectionHeader>
+                <SharedSectionHeader>
                     <template #top>Live Auction</template>
                     <template #title>NFT Live Auction</template>
-                </OtherElseSectionHeader>
+                </SharedSectionHeader>
             </template>
         </ModelGalleruCategor>
         <ModelGalleryByCategor>
             <template #titke>
-                <OtherElseSectionHeader>
+                <SharedSectionHeader>
                     <template #top>NFT Marketplace</template>
                     <template #title>NFT all Category</template>
-                </OtherElseSectionHeader>
+                </SharedSectionHeader>
             </template>
         </ModelGalleryByCategor>
         <MainBestUser />
         <ModelSladerblogCard>
             <template #title>
-                <OtherElseSectionHeader>
+                <SharedSectionHeader>
                     <template #title>Our Latest Blog</template>
                     <template #bottom>It has survived not only five centuries, but also the</template>
-                </OtherElseSectionHeader>
+                </SharedSectionHeader>
             </template>
         </ModelSladerblogCard>
     </div>

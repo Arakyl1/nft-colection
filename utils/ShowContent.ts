@@ -1,4 +1,4 @@
-import { windowMask } from "@/pinia/store";
+import { windowMask } from "@/pinia/windowMask";
 
 export default function () {
     const stage = ref(false)

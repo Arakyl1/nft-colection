@@ -16,9 +16,7 @@
 <script setup lang="ts">
 import SladerItem from "./item.vue";
 
-const { getDataByAttrebutes } = useBlogs()
-
-const { data: cardBlog } = await getDataByAttrebutes('caruselBlog', {
+const { data: cardBlog } = await blogGetDataByAttrebutes('caruselBlog', {
     where: { attributes: { some: { name: 'Collectibles' } } },
     take: 3,
     ...selectBlogCard()

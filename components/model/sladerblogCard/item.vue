@@ -13,14 +13,15 @@
                 <p>{{ data.text }}</p>
             </div>
             <div class="text-center py-4">
-                <ButtomReadMore />
+                <SharedButtomBase
+                class="border-slate-700 text-slate-700"
+                >Read More</SharedButtomBase>
             </div>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import ButtomReadMore from "./UI/buttom/readMore.vue";
 defineProps<{ data: object }>()
 const transformDate = (date: string) => formatter(temp1('en-US')).format(new Date(date))
 </script>

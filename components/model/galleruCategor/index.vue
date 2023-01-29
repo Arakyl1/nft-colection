@@ -15,9 +15,8 @@
 
 <script setup lang="ts">
 import Item from "./item.vue";
-const { getNFTCardBySelecCat } = useProduct()
 
-const { data, error } = await getNFTCardBySelecCat({
+const { data, error } = await productSearchByCategor({
     where: { news: true },
     take: 9,
     ...selectNFTCard({ author: { ...selectUserForCard()} })

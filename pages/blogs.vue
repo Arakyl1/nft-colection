@@ -1,9 +1,9 @@
 <template>
     <div>
         <section class="mb-16">
-            <OtherElseSectionHeader>
+            <SharedSectionHeader>
                 <template #title>Add an article</template>
-            </OtherElseSectionHeader>
+            </SharedSectionHeader>
             <div class="grid grid-cols-3 gap-8 mb-12">
                 <div>
                     <OtherElseDownloadImg :reset="reset" @link-img="(e) => { blogData.img = e }" />
@@ -36,12 +36,8 @@
 </template>
 
 <script setup lang="ts">
-import { userActive, alertContent } from "@/pinia/store";
-
-const user = userActive()
-const alert = alertContent()
-const { userData } = storeToRefs(user)
-const { createBlogItem } = useBlogs()
+const { createAlert } = useAlert()
+const { userData } = useStoreUser()
 const reset = ref<boolean>(false)
 
 const blogData = ref(createBlogData())
@@ -52,19 +48,19 @@ async function createBlogArticle() {
     if (userData.value) {
         blogData.value.authorId = userData.value.id
         if (validParams.value === -1) {
-            const { data, error } = await createBlogItem(`createblogItem_${Date.now()}`, { data: blogData.value })
+            const { data, error } = await blogCreateItem(`createblogItem_${Date.now()}`, { data: blogData.value })
             if (!error.value) {
                 blogData.value = createBlogData()
                 resetImage()
-                alert.updateContent('Статья опубликована')
+                createAlert('Статья опубликована')
             } else {
-                alert.updateContent('Возникла ошибка при отправке данных')
+                createAlert('Возникла ошибка при отправке данных')
             }
         } else {
-            alert.updateContent('Не все заполнены поля')
+            createAlert('Не все заполнены поля')
         }
     } else {
-        alert.updateContent('Чтобы добавить товар, авторизуйтесь')
+        createAlert('Чтобы добавить товар, авторизуйтесь')
     }
 }
 const resetImage = () => reset.value = !reset.value

@@ -29,8 +29,8 @@
                     prevItem, nextItem, indexActiveButton, updateScrolLeftSlader
                 }">
                     <div class="flex justify-center">
-                        <ButtomArrow class="-scale-x-100" @click="prevItem" />
-                        <ButtomArrow @click="nextItem" />
+                        <SharedArrow class="-scale-x-100 group icon-black shadow-md mx-8" @click="prevItem" />
+                        <SharedArrow class="group icon-black shadow-md mx-8" @click="nextItem" />
                     </div>
                 </slot>
             </div>
@@ -38,7 +38,6 @@
     </div>
 </template>
 <script setup lang="ts">
-import ButtomArrow from "./UI/buttom/arrow.vue";
 interface Props {
     data: [] | null,
     containerClass?: string,

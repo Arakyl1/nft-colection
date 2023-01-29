@@ -8,8 +8,6 @@
 </template>
 
 <script setup lang="ts">
-import { alertContent } from "@/pinia/store";
-
-const { content, alertActive } = storeToRefs(alertContent())
+const { content, alertActive } = useAlert()
 
 </script>

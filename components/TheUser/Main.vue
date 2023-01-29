@@ -22,18 +22,14 @@
         </div>
         <UIButtomStan
         class="bg-rose-500 text-white py-3 rounded-full px-5"
-        @click="logout">
+        @click="userLogout">
             Выйти
         </UIButtomStan>
     </div>
 </div>
 </template>
 <script setup lang="ts">
-import { userActive } from "@/pinia/store"
-
-const user = userActive()
-const { userData } = storeToRefs(user)
-const { logout } = useAuth()
+const { userData } = useStoreUser()
 
 const list = [
   { data: ['Корзина'] },

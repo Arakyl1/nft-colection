@@ -44,7 +44,7 @@
     </div>
 </template>
 <script setup lang="ts">
-import { alertContent } from "@/pinia/store";
+
 interface DataUser {
     username: string,
     email: string,
@@ -55,8 +55,7 @@ interface DataUser {
 const props = withDefaults(defineProps<{ active: boolean}>(), { active: false })
 
 const data = ref<DataUser>(createObject())
-const { register } = useAuth()
-const alertContentFun = alertContent()
+const { createAlert } = useAlert()
 
 const emailValid = computed(() => {
     return !!data.value.email.match(/[-.\w]+@([\w-]+\.)+[\w-]+/g)
@@ -66,16 +65,17 @@ const passwordValid = computed(() => {
   return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/g.test(data.value.password)
 })
 
+
 async function createUser() {
   if (emailValid.value) {
     if (passwordValid.value) {
-      const res = await register(JSON.stringify(data.value))
+      const res = await userRegister(JSON.stringify(data.value))
       if (res) data.value = createObject()
     } else {
-      alertContentFun.updateContent('Пароль слишком прост')
+      createAlert('Пароль слишком прост')
     }
   } else {
-    alertContentFun.updateContent('Некорректный адрес почты')
+    createAlert('Некорректный адрес почты')
   }
   
 }

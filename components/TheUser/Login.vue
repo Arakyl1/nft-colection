@@ -24,8 +24,6 @@
 </template>
 
 <script setup lang="ts">
-import { alertContent } from "@/pinia/store";
-
 interface DataUser {
     username: string,
     password: string,
@@ -35,11 +33,10 @@ const props = defineProps<{
     functionModal: Function,
     active: boolean
 }>()
+const { createAlert } = useAlert()
 
 
 const data = ref<DataUser>(createObject())
-const alertFun = alertContent()
-const { login } = useAuth()
 
 function createObject() {
     return {
@@ -50,9 +47,8 @@ function createObject() {
 
 async function loginUser() {
     if (data.value.username && data.value.password) {
-        const { login } = useAuth();
         try {
-            const res = await login(data.value)
+            const res = await userLogin(data.value)
             if (res) {
                 props.functionModal()
             }
@@ -61,7 +57,7 @@ async function loginUser() {
         }
         return
     }
-    alertFun.updateContent('Проверьте введеные данные')
+    createAlert('Проверьте введеные данные')
 }
 
 watch(() => props.active, () => {

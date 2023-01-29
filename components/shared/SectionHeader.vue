@@ -14,6 +14,3 @@
         </p>
     </div>
 </template>
-<script setup lang="ts">
-defineProps()
-</script>
