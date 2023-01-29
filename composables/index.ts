@@ -8,6 +8,6 @@ export { reRefrechAccess as reRefrechAccessToken } from "./token/reRefrechAccess
 export { createItem as blogCreateItem } from "./blog/createItem";
 export { getDataByAttrebutes as blogGetDataByAttrebutes} from "./blog/getDataByAttrebute";
 export { createCardNFT as productCreateCard} from "./product/create";
-export { searchByAttributes as productSearchByAttributes } from "./product/searchByattributes";
+export { searchByAttributes as productSearchByAttributes } from "./product/searchByAttributes";
 export { searchByCategor as productSearchByCategor} from "./product/searchByCategor";
 export { getTopUser as productgetTopUser } from "./product/topUser"
