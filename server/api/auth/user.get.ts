@@ -8,15 +8,13 @@ export default defineEventHandler(async(event) => {
     const token = event.req.headers['authorization']?.split(' ')[1]
     const decoded = decodeAccessToken(token)
     
-    if (!decoded) {
-        return {statusCode: 401, statusMessage: 'Unauthorized' }
-    }
+    if (!decoded) return { message: 'Unauthorized' }
 
     try {
         const searchParams = returnParamsMain({ id: decoded.userId }, returnParamsAditional())
         const user = await prismaFindUnique('user', searchParams)
         return { user: userTransform(user)}
     } catch (error) {
-        return { statusCode: 404, statusMessage: '' }
+        return { message: 'Error' }
     }
 })

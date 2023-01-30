@@ -15,13 +15,8 @@ interface User {
 
 export default defineEventHandler(async(event: H3Event) => {
     const body = await readBody(event)
-
     const { username, email, password, repeartPassword } = body
-    
-    if (password !== repeartPassword) {
-        return { statusCode: 400, statusMessage: "Пароли не совпадают" }
-        // return sendError(event, createError({ statusCode: 400, statusMessage: "Password do not match" }))
-    }
+
     const userData = {
         username,
         email,
@@ -66,7 +61,7 @@ export default defineEventHandler(async(event: H3Event) => {
         }
 
     } catch (error) {
-        return { statusCode: 400, statusMessage: "Такой пользователь уже существует" }
+        return { message: "Такой пользователь уже существует" }
        // return sendError(event, createError({ statusCode: 400, statusMessage: "Такой пользователь уже существует" }))
     }
 })

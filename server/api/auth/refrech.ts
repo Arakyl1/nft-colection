@@ -6,23 +6,10 @@ import { returnParamsMain, returnParamsAditional } from "@/server/utils/searchPa
 export default defineEventHandler(async(event) => {
 
     const refrechToken: string | undefined = getCookie(event, 'refrech_token')
-
-    if (!refrechToken) {
-        return {
-            statusCode: 401,
-            statusMessage: "Refrech token is invalid one"
-        }
-        // throw createError()
-    }
+    if (!refrechToken) return { message: "Refrech token is invalid one" }
     
     const rToken = await prismaFindUnique('refrechToken', { where: { token: refrechToken }})
-    
-    if (!rToken) {
-        return {
-            statusCode: 401,
-            statusMessage: "Refrech token is invalid" 
-        }
-    }
+    if (!rToken)  return { message: "Refrech token is invalid" }
 
     const token: string | JwtPayload | null = decodeRefrechToken(refrechToken)
     
@@ -31,12 +18,8 @@ export default defineEventHandler(async(event) => {
         const user = await prismaFindUnique('user', searchParams)
         
         const { accessToken } = await generateTokens(user)
-        
         return { accessToken }
     } catch (error) {
-        return {
-            statusCode: 401,
-            statusMessage: "Something went wrong"
-        }
+        return { message: "Something went wrong" }
     }
 })

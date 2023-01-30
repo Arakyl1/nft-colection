@@ -1,8 +1,8 @@
 export interface User {
     profileImage: string,
-    name: string,
+    name?: string,
     username: string,
-    ranting: number
+    ranting?: number
 }
 
 export interface NFTCard {
@@ -19,4 +19,9 @@ export interface BlogCard {
     img: string,
     text: string,
     date: string
+}
+export interface Colection{
+    id: number,
+    title: string,
+    text: string,
 }

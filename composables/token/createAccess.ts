@@ -3,15 +3,12 @@ export const createAccess = async() => {
     try {
         const data = await $fetch('/api/auth/refrech')
        
-        if (data.statusCode && data.statusCode > 400) {
-            throw createError({
-                statusCode: data.statusCode,
-                statusMessage: data.statusMessage
-            })
+        if ('message' in data && data.message) {
+            console.log(data.message);
+            return 
         }
      
         updateAccessToken(data.accessToken ? data.accessToken : '')
-        
     } catch (error) {
         console.log(error);
 

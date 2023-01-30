@@ -38,3 +38,17 @@ export function selectBlogCard(select?:object):object {
         
     }
 }
+
+export function selectColection(select?:object):object {
+    return {
+        select: {
+            id: true,
+            title: true,
+            text: true,
+            nFTCard: { select: { id: true, img: true }, take: 3 },
+            author: selectUserForCard(),
+            ...select
+        },
+        
+    }
+}

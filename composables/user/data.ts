@@ -9,14 +9,10 @@ export const getData = async() => {
                 Authorization: `Bearer ${accessToken.value}`
             }
         })
-        if ( data.statusCode ? data.statusCode >= 400 : false) {
-            throw createError({
-                statusCode: data.statusCode,
-                statusMessage: data.statusMessage
-            })
-        }
-        updateUser(data.user)   
+        if ('message' in data && data.message) return new Error('Error')
+
+        updateUser(data.user ? data.user : null)   
     } catch (error) {
-        throw error
+        throw new Error('Error')
     }
 }

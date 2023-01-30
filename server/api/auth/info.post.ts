@@ -1,10 +1,10 @@
-import { prismafindMany } from "../../db/methods";
+import { prismafindMany } from "~~/server/db/methods"
 
 export default defineEventHandler(async(event) => {
     const body = await readBody(event)
     try {
         return await prismafindMany('user', body)
-    } catch (error) {
-        return { message: 'Не удалось получить данные'}
+    } catch (error: any) {
+        sendError(event, error)
     }
 })

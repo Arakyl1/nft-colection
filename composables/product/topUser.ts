@@ -4,11 +4,8 @@ export const getTopUser = async (event: object) => {
             method: "POST",
             body: event
         })
-        if ('statusCode' in data) {
-            throw createError({
-                statusCode: data.statusCode,
-                statusMessage: data.statusMessage
-            })
+        if ('message' in data && data.message) {
+           return console.log(data.message);
         }
         return data
     } catch (error) {

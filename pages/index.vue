@@ -45,5 +45,14 @@
                 </SharedSectionHeader>
             </template>
         </WidgetsBlogCard>
+        <WidgetsColectionNFT>
+            <template #title>
+                <SharedSectionHeader class="mb-12">
+                    <template #top>Collection</template>
+                    <template #title>NFT Collection </template>
+                    <template #title-span> Art</template>
+                </SharedSectionHeader>
+            </template>
+        </WidgetsColectionNFT>
     </div>
 </template>

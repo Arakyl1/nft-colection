@@ -29,6 +29,9 @@
     .decor-circle{
         @apply w-2 h-2 aspect-square bg-white rounded-full inline-block
     }
+    .header__container {
+        @apply top-0 left-0 w-full transition-all py-8
+    }
 }
 *,::after, ::before{
     font-family: 'DM Sans', sans-serif;

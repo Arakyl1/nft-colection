@@ -5,11 +5,6 @@ export default defineEventHandler(async(event) => {
     try { 
         return await prismaCreate('nFTCard', body)
     } catch (error) {
-        console.log(error);
-        
-        return {
-            statusCode: 404,
-            statusMessage: 'Ошибка при создание'
-        }
+       return { message: 'Ошибка при создание' }
     }
 })

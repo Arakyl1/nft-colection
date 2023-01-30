@@ -13,7 +13,7 @@
                 <p>{{ data.text }}</p>
             </div>
             <div class="text-center py-4">
-                <SharedButtomBase class="border-slate-700 text-slate-700">Read More</SharedButtomBase>
+                <SharedButtomBase class="border-slate-700 text-slate-700 py-2">Read More</SharedButtomBase>
             </div>
         </div>
     </div>

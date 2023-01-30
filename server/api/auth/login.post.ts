@@ -7,23 +7,14 @@ import { returnParamsMain, returnParamsAditional } from "@/server/utils/searchPa
 
 export default defineEventHandler(async(event) => {
     const body = await readBody(event)
-
     const { username, password } = body 
 
     const searchParams = returnParamsMain({ username: username }, returnParamsAditional({ password: true }))
-  
     const user = await prismaFindUnique('user', searchParams)
-
-    if (!user) {
-        return { statusCode: 400, statusMessage: 'Такой пользователь на зарегистрирован' }
-    }
+    if (!user) return({ message: 'Такой пользователь на зарегистрирован'})
 
     const doesThePaswordMatch = await bcryptjs.compare(password, user.password)
-
-
-    if (!doesThePaswordMatch) {
-        return { statusCode: 400, statusMessage: 'Некорректный пароль' }
-    }
+    if (!doesThePaswordMatch) return({ message: 'Некорректный пароль'})
     // Generate Token
 
     const { accessToken, refrechToken } = await generateTokens(user)

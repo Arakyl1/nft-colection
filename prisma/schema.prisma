@@ -24,6 +24,7 @@ model NFTCard {
   authorId Int
 
   attributes Attributes[]
+  colection Colection[]
 }
 
 model Attributes {
@@ -47,6 +48,19 @@ model BlogCard {
   attributes Attributes[]
 }
 
+model Colection {
+  id Int @id @default(autoincrement())
+  title String
+  text String @default("")
+  ranting Int @default(0)
+  date DateTime @default(now())
+
+  nFTCard NFTCard[]
+
+  author User @relation(fields: [authorId], references: [id])
+  authorId Int
+}
+
 model User {
   id Int @id @default(autoincrement())
   email   String  
@@ -61,6 +75,7 @@ model User {
   
   blogcard BlogCard[]
   card NFTCard[]
+  colection Colection[]
   followedBy User[]  @relation("UserFollows")
   following  User[]  @relation("UserFollows")
   refrechToken RefrechToken[]

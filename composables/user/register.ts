@@ -1,5 +1,5 @@
 
-export const register = async(event: Event) => {
+export const register = async(event: string) => {
     const { createAlert} = useAlert()
     const { updateUser } = useStoreUser()
     const { updateAccessToken } = useAccessToken()
@@ -10,19 +10,13 @@ export const register = async(event: Event) => {
             body: event
         })
 
-        if (data.statusCode ? data.statusCode >= 400 : false) {
-            throw createError({
-                statusCode: data.statusCode,
-                statusMessage:data.statusMessage
-            })
-        }
+        if ('message' in data && data.message) return createAlert(data.message)
 
-        updateUser(data.user ? data.user : {})
-        updateAccessToken(data.access_token ? data.access_token : '')
+        updateUser(data.user)
+        updateAccessToken(data.access_token)
         createAlert('Пользователь зарегистрирован')
         return true
     } catch (error: any) {
         console.log(error);
-        createAlert(error.statusMessage)
     }
 }
