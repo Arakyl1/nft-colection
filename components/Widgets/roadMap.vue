@@ -71,7 +71,7 @@ interface Item {
     date: string
 }
 
-const item = ref<HTMLElement[] | null>(null)
+// const item = ref<HTMLElement[] | null>(null)
 
 const itemList = ref<Item[]>([
     { id: 1, active: false, left: true, title: 'ICO Conducting', text: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Natoque viverra eget.', date: 'Sun Feb 01 2023 19:43:20 GMT+0300' },
