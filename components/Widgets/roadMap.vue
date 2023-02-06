@@ -83,7 +83,7 @@ const itemList = ref<Item[]>([
 ])
 
 onBeforeMount(() => {
-    if (item) {
+    if (item.length) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entrie => {
                 const indexItem = entrie.target.dataset.index
