@@ -9,8 +9,7 @@
                             <div class="w-5/12">
                                 <Transition name="show-item"
                                     :enter-from-class="!item.left ? 'show-item-left' : 'show-item-rigth'"
-                                    :leave-to-class="item.left ? 'show-item-left' : 'show-item-rigth'"
-                                    >
+                                    :leave-to-class="item.left ? 'show-item-left' : 'show-item-rigth'">
                                     <div v-show="item.active" class="p-6 shadow"
                                         :class="[{ 'text-right': !item.left }]">
                                         <h3 class="test-xl font-bold mb-2">{{ item.title }}</h3>
@@ -27,10 +26,12 @@
                                     :class="[{ 'flex-row-reverse': !item.left }]">
                                     <Transition name="show-text">
                                         <div v-show="item.active" class="w-5/12">
-                                            <p class="[white-space:nowrap]" :class="[{ 'pl-3': !item.left }]">{{ transformDate(item.date) }}</p>
+                                            <p class="[white-space:nowrap]" :class="[{ 'pl-3': !item.left }]">{{
+                                                transformDate(item.date)
+                                            }}</p>
                                         </div>
 
-                                    </Transition> 
+                                    </Transition>
                                     <Transition name="show-icon">
                                         <div class="w-2/12 aspect-square" v-show="item.active">
                                             <div class="h-full rounded-full border-rose-500
@@ -81,22 +82,23 @@ const itemList = ref<Item[]>([
 ])
 
 onMounted(() => {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entrie => {
-            const indexItem = entrie.target.dataset.index
-            if (indexItem && entrie.intersectionRatio === 1) {
-                itemList.value[+indexItem - 1].active = true
-            }
-        })
-
-    }, {
-        root: null,
-        threshold: 1
-    })
     if (item.value) {
-        item.value.forEach(elem => observer.observe(elem));
-    }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entrie => {
+                const indexItem = entrie.target.dataset.index
+                if (indexItem && entrie.intersectionRatio === 1) {
+                    itemList.value[+indexItem - 1].active = true
+                }
+            })
 
+        }, {
+            root: null,
+            threshold: 1
+        })
+        if (item.value) {
+            item.value.forEach(elem => observer.observe(elem));
+        }
+    }
 })
 
 </script>
