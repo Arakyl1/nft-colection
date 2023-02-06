@@ -64,4 +64,6 @@ async function createBlogArticle() {
     }
 }
 const resetImage = () => reset.value = !reset.value
+console.log(true);
+
 </script>
