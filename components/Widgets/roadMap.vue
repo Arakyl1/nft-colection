@@ -82,23 +82,23 @@ const itemList = ref<Item[]>([
 ])
 
 onMounted(() => {
-    if (item.value) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entrie => {
-                const indexItem = entrie.target.dataset.index
-                if (indexItem && entrie.intersectionRatio === 1) {
-                    itemList.value[+indexItem - 1].active = true
-                }
-            })
+    // if (item.value) {
+    //     const observer = new IntersectionObserver((entries) => {
+    //         entries.forEach(entrie => {
+    //             const indexItem = entrie.target.dataset.index
+    //             if (indexItem && entrie.intersectionRatio === 1) {
+    //                 itemList.value[+indexItem - 1].active = true
+    //             }
+    //         })
 
-        }, {
-            root: null,
-            threshold: 1
-        })
-        if (item.value) {
-            item.value.forEach(elem => observer.observe(elem));
-        }
-    }
+    //     }, {
+    //         root: null,
+    //         threshold: 1
+    //     })
+    //     if (item.value) {
+    //         item.value.forEach(elem => observer.observe(elem));
+    //     }
+    // }
 })
 
 </script>
