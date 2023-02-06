@@ -83,19 +83,20 @@ const itemList = reactive<Item[]>([
 ])
 
 onMounted(() => {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entrie => {
-            const indexItem = entrie.target.dataset.index
-            if (indexItem && entrie.intersectionRatio === 1) {
-                itemList[+indexItem - 1].active = true
-            }
+    if (element.value) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entrie => {
+                const indexItem = entrie.target.dataset.index
+                if (indexItem && entrie.intersectionRatio === 1) {
+                    itemList[+indexItem - 1].active = true
+                }
+            })
+
+        }, {
+            root: null,
+            threshold: 1
         })
 
-    }, {
-        root: null,
-        threshold: 1
-    })
-    if (element.value) {
         element.value.forEach(elem => observer.observe(elem));
     }
 })
