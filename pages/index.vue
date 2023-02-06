@@ -21,7 +21,7 @@
             </SharedSectionHeader>
         </WidgetsArt>
 
-        <!-- <WidgetsGalleryByCategor class="mb-32">
+        <WidgetsGalleryByCategor class="mb-32">
             <template #title>
                 <SharedSectionHeader>
                     <template #top>NFT Marketplace</template>
@@ -30,7 +30,7 @@
             </template>
         </WidgetsGalleryByCategor>
 
-        <WidgetsOtherInfo class="mb-28">
+        <!-- <WidgetsOtherInfo class="mb-28">
             <template #title>
                 <SharedSectionHeader>
                     <template #top>NFT Marketplace</template>
