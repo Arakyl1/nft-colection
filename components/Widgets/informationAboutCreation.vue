@@ -8,7 +8,8 @@
                 <div class="grid grid-cols-2 gap-x-12">
                     <div class="grid grid-cols-2 gap-x-6">
                         <div v-for="(item, index) in listItem" :key="index">
-                            <div class="w-20 aspect-square rounded-xl flex items-center justify-center mb-2">
+                            <div class="w-20 aspect-square rounded-xl flex items-center justify-center mb-2"
+                            :style="{ backgroundColor: '#' + item.bg }">
                                 <img :src="`./img/svg/icon/${item.img}`" alt="">
 
                             </div>
@@ -27,10 +28,10 @@
 </template>
 <script setup lang="ts">
 
-const listItem: { title: string, text: string, img: string }[] = [
-    { title: 'Setup Your Wallet', text: 'When our power of choice is untram and when nothing prevents our', img: 'wallet.svg'},
-    { title: 'For Sale Listing', text: 'When our power of choice is untram and when nothing prevents our', img: 'list.svg' },
-    { title: 'Creat Your Collection', text: 'When our power of choice is untram and when nothing prevents our', img: 'group.svg'  },
-    { title: 'Add Your NFT', text: 'When our power of choice is untram and when nothing prevents our', img: 'nft.svg' },
+const listItem: { title: string, text: string, img: string, bg: string }[] = [
+    { title: 'Setup Your Wallet', text: 'When our power of choice is untram and when nothing prevents our', img: 'wallet.svg', bg: 'FFAEC7'},
+    { title: 'For Sale Listing', text: 'When our power of choice is untram and when nothing prevents our', img: 'list.svg', bg: '7B5959' },
+    { title: 'Creat Your Collection', text: 'When our power of choice is untram and when nothing prevents our', img: 'group.svg', bg: 'BDEFFF' },
+    { title: 'Add Your NFT', text: 'When our power of choice is untram and when nothing prevents our', img: 'nft.svg', bg: 'AEFFC5' },
 ]
 </script>
