@@ -39,7 +39,7 @@
             </template>
         </WidgetsOtherInfo>
 
-        <!-- <WidgetsGalleryCard class="mb-28">
+        <WidgetsGalleryCard class="mb-28">
             <template #title>
                 <SharedSectionHeader>
                     <template #top>Live Auction</template>
@@ -47,7 +47,7 @@
                 </SharedSectionHeader>
             </template>
         </WidgetsGalleryCard >
-        <WidgetsBestUser class="mb-28">
+        <!-- <WidgetsBestUser class="mb-28">
             <template #title>
                 <SharedSectionHeader class="mb-12">
                     <template #top>Seller</template>
