@@ -4,7 +4,7 @@
         <div>
             <div >
                 <div v-for="item in itemList" :key="item.id" class="mb-4" >
-                    <div class="aspect-[5/1]" ref="item" :data-index="item.id">
+                    <div class="aspect-[5/1]" ref="element" :data-index="item.id">
                         <div v-show="item.active" class="h-full flex" :class="[{ 'flex-row-reverse': item.left }]">
                             <div class="w-5/12">
                                 <Transition name="show-item"
@@ -71,7 +71,7 @@ interface Item {
     date: string
 }
 
-const item = ref<HTMLElement[] | null>(null)
+const element = ref<HTMLElement[] | null>(null)
 
 const itemList = reactive<Item[]>([
     { id: 1, active: false, left: true, title: 'ICO Conducting', text: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Natoque viverra eget.', date: 'Sun Feb 01 2023 19:43:20 GMT+0300' },
@@ -105,7 +105,7 @@ const itemList = reactive<Item[]>([
 //         // }
 //     }
 // })
-watch(() => item.value, () => {
+watch(() => element.value, () => {
     const observer = new IntersectionObserver((entries) => {
             entries.forEach(entrie => {
                 const indexItem = entrie.target.dataset.index
@@ -118,8 +118,8 @@ watch(() => item.value, () => {
             root: null,
             threshold: 1
         })
-        if (item.value) {
-            item.value.forEach(elem => observer.observe(elem));
+        if (element.value) {
+            element.value.forEach(elem => observer.observe(elem));
         }
 })
 </script>
