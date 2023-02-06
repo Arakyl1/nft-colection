@@ -58,7 +58,7 @@
             </template>
         </WidgetsBestUser>
 
-        <!-- <WidgetsInformationAboutCreation class="mb-28"/>
+        <WidgetsInformationAboutCreation class="mb-28"/>
         <WidgetsRoadMap class="mb-12">
             <template #title>
                 <SharedSectionHeader class="group title-color-purple">
@@ -69,7 +69,7 @@
             </template>
         </WidgetsRoadMap>
 
-        <WidgetsUserCommit class="mb-28">
+        <!-- <WidgetsUserCommit class="mb-28">
             <template #title>
                 <SharedSectionHeader>
                     <template #title>Hear From Our Happy Users</template>

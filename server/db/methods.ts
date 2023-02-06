@@ -9,8 +9,6 @@ export const prismaFindUnique = async(key: string, body: object) => {
 }
 
 export const prismafindMany = async(key: string, body: object) => {
-    console.log(key, body);
-    
     return prisma[key].findMany(body)
 }
 
