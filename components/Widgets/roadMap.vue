@@ -2,8 +2,8 @@
     <section>
         <slot name="title"></slot>
         <div>
-            <div >
-                <div v-for="item in itemList" :key="item.id" class="mb-4" >
+            <div>
+                <div v-for="item in itemList" :key="item.id" class="mb-4">
                     <div class="aspect-[5/1]" ref="element" :data-index="item.id">
                         <div v-show="item.active" class="h-full flex" :class="[{ 'flex-row-reverse': item.left }]">
                             <div class="w-5/12">
@@ -82,46 +82,24 @@ const itemList = reactive<Item[]>([
     { id: 6, active: false, left: false, title: 'Token Sale', text: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Natoque viverra eget.', date: 'Sun Feb 01 2023 19:43:20 GMT+0300' },
 ])
 
-// onMounted(() => {
-//     if (item.value) {
-//         item.value.forEach(el => {
-//             console.log(el);
-//         })
-        
-//         // const observer = new IntersectionObserver((entries) => {
-//         //     entries.forEach(entrie => {
-//         //         const indexItem = entrie.target.dataset.index
-//         //         if (indexItem && entrie.intersectionRatio === 1) {
-//         //             itemList[+indexItem - 1].active = true
-//         //         }
-//         //     })
-
-//         // }, {
-//         //     root: null,
-//         //     threshold: 1
-//         // })
-//         // if (items.value) {
-//         //     item.forEach(elem => observer.observe(elem));
-//         // }
-//     }
-// })
-watch(() => element.value, () => {
+onMounted(() => {
     const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entrie => {
-                const indexItem = entrie.target.dataset.index
-                if (indexItem && entrie.intersectionRatio === 1) {
-                    itemList[+indexItem - 1].active = true
-                }
-            })
-
-        }, {
-            root: null,
-            threshold: 1
+        entries.forEach(entrie => {
+            const indexItem = entrie.target.dataset.index
+            if (indexItem && entrie.intersectionRatio === 1) {
+                itemList[+indexItem - 1].active = true
+            }
         })
-        if (element.value) {
-            element.value.forEach(elem => observer.observe(elem));
-        }
+
+    }, {
+        root: null,
+        threshold: 1
+    })
+    if (element.value) {
+        element.value.forEach(elem => observer.observe(elem));
+    }
 })
+
 </script>
 
 <style lang="css">
