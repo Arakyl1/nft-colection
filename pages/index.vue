@@ -58,8 +58,8 @@
             </template>
         </WidgetsBestUser>
 
-        <!-- <WidgetsInformationAboutCreation class="mb-28"/>-->
-        <WidgetsRoadMap class="mb-12">
+        <WidgetsInformationAboutCreation class="mb-28"/>
+        <!-- <WidgetsRoadMap class="mb-12">
             <template #title>
                 <SharedSectionHeader class="group title-color-purple">
                     <template #title>NFT roadmap</template>
@@ -67,7 +67,7 @@
                         aliquet turpis elit elit natoque varius</template>
                 </SharedSectionHeader>
             </template>
-        </WidgetsRoadMap> 
+        </WidgetsRoadMap>  -->
 
          <WidgetsUserCommit class="mb-28">
             <template #title>
