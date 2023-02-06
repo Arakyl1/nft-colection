@@ -3,7 +3,7 @@
         <slot name="title"></slot>
         <div>
             <div >
-                <div v-for="item in itemList" :key="item.id" :data-index="item.id" class="mb-4" ref="item">
+                <div v-for="item in itemList" :key="item.id" :data-index="item.id" class="mb-4" :ref="'item'">
                     <div class="aspect-[5/1]">
                         <div v-show="item.active" class="h-full flex" :class="[{ 'flex-row-reverse': item.left }]">
                             <div class="w-5/12">
@@ -71,7 +71,7 @@ interface Item {
     date: string
 }
 
-const item = reactive<HTMLElement[]>([])
+const item = ref<HTMLElement[] | null>(null)
 
 const itemList = reactive<Item[]>([
     { id: 1, active: false, left: true, title: 'ICO Conducting', text: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Natoque viverra eget.', date: 'Sun Feb 01 2023 19:43:20 GMT+0300' },
@@ -83,8 +83,8 @@ const itemList = reactive<Item[]>([
 ])
 
 onMounted(() => {
-    if (item.length) {
-        item.forEach(el => {
+    if (item.value) {
+        item.value.forEach(el => {
             console.log(el);
         })
         
