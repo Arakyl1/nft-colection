@@ -2,7 +2,7 @@
     <section>
         <slot name="title"></slot>
         <div>
-            <div>
+            <div >
                 <div v-for="item in itemList" :key="item.id" :data-index="item.id" class="mb-4" ref="item">
                     <div class="aspect-[5/1]">
                         <div v-show="item.active" class="h-full flex" :class="[{ 'flex-row-reverse': item.left }]">
@@ -71,7 +71,7 @@ interface Item {
     date: string
 }
 
-const item = reactive([])
+const item = reactive<HTMLElement[]>([])
 
 const itemList = reactive<Item[]>([
     { id: 1, active: false, left: true, title: 'ICO Conducting', text: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Natoque viverra eget.', date: 'Sun Feb 01 2023 19:43:20 GMT+0300' },
@@ -82,23 +82,27 @@ const itemList = reactive<Item[]>([
     { id: 6, active: false, left: false, title: 'Token Sale', text: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Natoque viverra eget.', date: 'Sun Feb 01 2023 19:43:20 GMT+0300' },
 ])
 
-onBeforeMount(() => {
+onMounted(() => {
     if (item.length) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entrie => {
-                const indexItem = entrie.target.dataset.index
-                if (indexItem && entrie.intersectionRatio === 1) {
-                    itemList[+indexItem - 1].active = true
-                }
-            })
-
-        }, {
-            root: null,
-            threshold: 1
+        item.forEach(el => {
+            console.log(el);
         })
-        if (item) {
-            item.forEach(elem => observer.observe(elem));
-        }
+        
+        // const observer = new IntersectionObserver((entries) => {
+        //     entries.forEach(entrie => {
+        //         const indexItem = entrie.target.dataset.index
+        //         if (indexItem && entrie.intersectionRatio === 1) {
+        //             itemList[+indexItem - 1].active = true
+        //         }
+        //     })
+
+        // }, {
+        //     root: null,
+        //     threshold: 1
+        // })
+        // if (items.value) {
+        //     item.forEach(elem => observer.observe(elem));
+        // }
     }
 })
 
