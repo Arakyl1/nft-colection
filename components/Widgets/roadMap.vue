@@ -73,7 +73,7 @@ interface Item {
 
 const item = reactive([])
 
-const itemList = ref<Item[]>([
+const itemList = reactive<Item[]>([
     { id: 1, active: false, left: true, title: 'ICO Conducting', text: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Natoque viverra eget.', date: 'Sun Feb 01 2023 19:43:20 GMT+0300' },
     { id: 2, active: false, left: false, title: 'Legal Reviewng', text: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Natoque viverra eget.', date: 'Sun Feb 01 2023 19:43:20 GMT+0300' },
     { id: 3, active: false, left: true, title: 'Trade Enquiries', text: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Natoque viverra eget.', date: 'Sun Feb 01 2023 19:43:20 GMT+0300' },
@@ -88,7 +88,7 @@ onBeforeMount(() => {
             entries.forEach(entrie => {
                 const indexItem = entrie.target.dataset.index
                 if (indexItem && entrie.intersectionRatio === 1) {
-                    itemList.value[+indexItem - 1].active = true
+                    itemList[+indexItem - 1].active = true
                 }
             })
 
