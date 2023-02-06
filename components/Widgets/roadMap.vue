@@ -7,11 +7,10 @@
                     <div class="aspect-[5/1]">
                         <div v-show="item.active" class="h-full flex" :class="[{ 'flex-row-reverse': item.left }]">
                             <div class="w-5/12">
-                                <Transition name="custorm"
+                                <Transition name="show-item"
                                     :enter-from-class="!item.left ? 'show-item-left' : 'show-item-rigth'"
                                     :leave-to-class="item.left ? 'show-item-left' : 'show-item-rigth'"
-                                    :enter-active-class="'show-item-enter-active'"
-                                    :leave-active-class="'show-item-leave-active'">
+                                    >
                                     <div v-show="item.active" class="p-6 shadow"
                                         :class="[{ 'text-right': !item.left }]">
                                         <h3 class="test-xl font-bold mb-2">{{ item.title }}</h3>
