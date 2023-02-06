@@ -9,7 +9,7 @@
                 </SharedSectionHeader>
             </template>
         </WidgetsColectionNFT>
-        <WidgetsArt class="mb-28">
+        <!-- <WidgetsArt class="mb-28">
             <SharedSectionHeader class="m-12">
                 <template #title>
                     NFT art, Domain name, Stachu, Collection Gallery
@@ -86,7 +86,7 @@
                     <template #bottom>It has survived not only five centuries, but also the</template>
                 </SharedSectionHeader>
             </template>
-        </WidgetsBlogCard>
+        </WidgetsBlogCard> -->
         
     </div>
 </template>
