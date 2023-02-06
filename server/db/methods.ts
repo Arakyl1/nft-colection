@@ -20,3 +20,4 @@ export const prismaDelete = async(key: string, body: object) => {
     return prisma[key].delete(body)
 }
 
+

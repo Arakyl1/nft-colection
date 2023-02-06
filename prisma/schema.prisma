@@ -25,6 +25,7 @@ model NFTCard {
 
   attributes Attributes[]
   colection Colection[]
+  commit Comment[]
 }
 
 model Attributes {
@@ -76,9 +77,23 @@ model User {
   blogcard BlogCard[]
   card NFTCard[]
   colection Colection[]
+  commit Comment[]
   followedBy User[]  @relation("UserFollows")
   following  User[]  @relation("UserFollows")
   refrechToken RefrechToken[]
+}
+
+model Comment {
+  id Int @id @default(autoincrement())
+  ranting Int?
+  text String?
+  createAt DateTime @default(now())
+
+  card NFTCard @relation(fields: [cardId], references: [id])
+  cardId Int
+
+  author User @relation(fields: [authorId], references: [id])
+  authorId Int
 }
 
 model RefrechToken {

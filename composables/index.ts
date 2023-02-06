@@ -11,3 +11,5 @@ export { createCardNFT as productCreateCard} from "./product/create";
 export { searchByAttributes as productSearchByAttributes } from "./product/searchByAttributes";
 export { searchByCategor as productSearchByCategor} from "./product/searchByCategor";
 export { getTopUser as productgetTopUser } from "./product/topUser"
+export { default as commentCreate } from "./comment/create";
+export { default as commentGet } from "./comment/get"

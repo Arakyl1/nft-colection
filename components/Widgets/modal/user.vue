@@ -1,10 +1,5 @@
 <template>
-    <slot name="buttom">
-        <SharedButtomBase @click="updateStage" class="bg-rose-600 border-0 py-3 text-white after:content-none" :class="{ 'bg-violet-500': userData }">
-            Start Collecting
-        </SharedButtomBase>
-    </slot>
-    <EntitiesModalWindowTransition class="h-min w-[450px] sm:w-[calc(100vw-2rem)] z-50" :active="stage">
+       <EntitiesModalWindowTransition class="h-min w-[450px] sm:w-[calc(100vw-2rem)] z-50" :active="stage">
         <div class="py-8 px-12 rounded-3xl bg-gradient-to-br 
         sm:py-6 sm:px-6" :class="[userData ? 'to-purple-300 from-white' : 'from-indigo-500 to-purple-600']">
             <template v-if="userData">
@@ -28,6 +23,7 @@
         </div>
     </EntitiesModalWindowTransition>
 </template>
+
 <script setup lang="ts">
 import ShowContent from "@/utils/ShowContent";
 

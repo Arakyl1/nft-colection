@@ -1,4 +1,5 @@
 export interface User {
+    id?: number,
     profileImage: string,
     name?: string,
     username: string,
@@ -24,4 +25,11 @@ export interface Colection{
     id: number,
     title: string,
     text: string,
+}
+export interface CommentUser {
+    id: number,
+    ranting: number,
+    text: true,
+    card: { img: string, id: true }
+    author: User
 }

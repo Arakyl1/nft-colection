@@ -24,7 +24,7 @@
             </menu>
             <div class="grow"></div>
             <div >
-                <FeaturesUserAuth />
+                <EntitiesButtomUser/>
             </div>
         </div>
     </div>
