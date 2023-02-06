@@ -58,7 +58,7 @@
             </template>
         </WidgetsBestUser>
 
-        <WidgetsInformationAboutCreation class="mb-28"/>
+        <!-- <WidgetsInformationAboutCreation class="mb-28"/>
         <WidgetsRoadMap class="mb-12">
             <template #title>
                 <SharedSectionHeader class="group title-color-purple">
@@ -67,9 +67,9 @@
                         aliquet turpis elit elit natoque varius</template>
                 </SharedSectionHeader>
             </template>
-        </WidgetsRoadMap>
+        </WidgetsRoadMap> -->
 
-        <!-- <WidgetsUserCommit class="mb-28">
+         <WidgetsUserCommit class="mb-28">
             <template #title>
                 <SharedSectionHeader>
                     <template #title>Hear From Our Happy Users</template>
@@ -86,7 +86,7 @@
                     <template #bottom>It has survived not only five centuries, but also the</template>
                 </SharedSectionHeader>
             </template>
-        </WidgetsBlogCard> -->
+        </WidgetsBlogCard>
         
     </div>
 </template>
