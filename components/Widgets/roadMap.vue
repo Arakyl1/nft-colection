@@ -4,6 +4,7 @@
         <div>
             <div>
                 <div v-for="item in itemList" :key="item.id" :data-index="item.id" class="mb-4" ref="item">
+                    {{ item  }}
                     <!-- <div class="aspect-[5/1]">
                         <div v-show="item.active" class="h-full flex" :class="[{ 'flex-row-reverse': item.left }]">
                             <div class="w-5/12">
