@@ -30,7 +30,7 @@
             </template>
         </WidgetsGalleryByCategor>
 
-        <!-- <WidgetsOtherInfo class="mb-28">
+        <WidgetsOtherInfo class="mb-28">
             <template #title>
                 <SharedSectionHeader>
                     <template #top>NFT Marketplace</template>
@@ -39,7 +39,7 @@
             </template>
         </WidgetsOtherInfo>
 
-        <WidgetsGalleryCard class="mb-28">
+        <!-- <WidgetsGalleryCard class="mb-28">
             <template #title>
                 <SharedSectionHeader>
                     <template #top>Live Auction</template>
