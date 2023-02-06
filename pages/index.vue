@@ -9,7 +9,7 @@
                 </SharedSectionHeader>
             </template>
         </WidgetsColectionNFT>
-        <!-- <WidgetsArt class="mb-28">
+         <WidgetsArt class="mb-28">
             <SharedSectionHeader class="m-12">
                 <template #title>
                     NFT art, Domain name, Stachu, Collection Gallery
@@ -21,7 +21,7 @@
             </SharedSectionHeader>
         </WidgetsArt>
 
-        <WidgetsGalleryByCategor class="mb-32">
+        <!-- <WidgetsGalleryByCategor class="mb-32">
             <template #title>
                 <SharedSectionHeader>
                     <template #top>NFT Marketplace</template>
