@@ -7,7 +7,7 @@
     <div>
       <WidgetsTheHeader class="z-20"/>
       <WidgetsMainHeader class="z-10"/>
-      <div class="container sm:px-4 xs:px-3 px-2 z-10">
+      <div class="container sm:px-4 xs:px-3 px-2 z-10 min-h-screen">
         <NuxtPage :transition="{ name: 'page-transition' }"/>
       </div>
       <WidgetsTheFotter class="z-20"/>
