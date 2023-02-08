@@ -8,7 +8,7 @@
       <WidgetsTheHeader class="z-20"/>
       <WidgetsMainHeader class="z-10"/>
       <div class="container sm:px-4 xs:px-3 px-2 z-10">
-        <NuxtPage/>
+        <NuxtPage :transition="{ name: 'page-transition' }"/>
       </div>
       <WidgetsTheFotter class="z-20"/>
     </div>
@@ -52,5 +52,17 @@ onBeforeMount(() => {
 .alert-leave-to{
   opacity: 0;
   transform: translateY(-20px);
+}
+
+.page-transition-enter-active,
+.page-transition-leave-active{
+  transition: all 0.15s ease-out;
+}
+
+.page-transition-enter-from,
+.page-transition-leave-to {
+  transform: translateX(20px);
+
+  opacity: 0;
 }
 </style>

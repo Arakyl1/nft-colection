@@ -95,5 +95,12 @@
 </template>
 
 <script setup lang="ts">
+definePageMeta({
+    keepalive: true
+})
+useHead({
+    title: 'Main page',
+    
+})
 const { isMobile } = useDevice()
 </script>

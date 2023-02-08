@@ -36,6 +36,10 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+    title: 'Blog page'
+})
+
 const { createAlert } = useAlert()
 const { userData } = useStoreUser()
 const reset = ref<boolean>(false)
