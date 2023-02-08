@@ -4,11 +4,11 @@
             <SharedSectionHeader>
                 <template #title>Add an article</template>
             </SharedSectionHeader>
-            <div class="grid grid-cols-3 gap-8 mb-12">
+            <div class="grid lg:grid-cols-3 xl:gap-8 gap-6 mb-12 grid-cols-1">
                 <div>
                     <EntitiesDownloadImg :reset="reset" @link-img="(e) => { blogData.img = e }" />
                 </div>
-                <div class="col-start-2 col-end-4">
+                <div class="lg:col-start-2 lg:col-end-4">
                     <form class="flex flex-col h-full">
                         <input type="text" class="px-5 py-3 text-xl w-full focus-visible:outline-0
                         border border-rose-500 rounded-full mb-6 text-gray-700" v-model="blogData.title"
@@ -23,8 +23,8 @@
                 </div>
             </div>
             <div class="text-right">
-                <UIButtomStan class="bg-rose-500 text-white text-2xl rounded-full px-20" @click="createBlogArticle">
-                    Add article
+                <UIButtomStan class="bg-rose-500 text-white rounded-full px-20 md:text-2xl xs:text-xl text-lg md:py-4 py-3"
+                    @click="createBlogArticle">Add article
                 </UIButtomStan>
             </div>
             <div>

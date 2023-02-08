@@ -24,12 +24,14 @@
                 }}</p>
             </div>
             <div>
-                <FeaturesAddFavorite :id="data.id">
-                    <template #default="{ addProducFavorite, checkIdInFavorites }">
-                        <SharedLike @click="addProducFavorite"
+                <ClientOnly>
+                    <FeaturesAddFavorite :id="data.id">
+                        <template #default="{ addProducFavorite, checkIdInFavorites }">
+                            <SharedLike @click="addProducFavorite"
                             :class="[[checkIdInFavorites ? 'icon-rose' : 'icon-black']]" class="group" />
-                    </template>
-                </FeaturesAddFavorite>
+                        </template>
+                    </FeaturesAddFavorite>
+                </ClientOnly>
             </div>
         </div>
         <div class="flex mb-6">

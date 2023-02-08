@@ -123,6 +123,7 @@ interface Item {
 
 const { isMobile } = useDevice()
 const element = ref<HTMLElement[] | null>(null)
+const observer = ref<IntersectionObserver | null>(null)
 
 const itemList = reactive<Item[]>([
     { id: 1, active: false, left: true, title: 'ICO Conducting', text: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Natoque viverra eget.', date: 'Sun Feb 01 2023 19:43:20 GMT+0300' },
@@ -135,7 +136,7 @@ const itemList = reactive<Item[]>([
 
 
 onMounted(() => {
-    const observer = new IntersectionObserver((entries) => {
+    observer.value = new IntersectionObserver((entries) => {
         entries.forEach(entrie => {
             const indexItem = entrie.target.dataset.index
             if (indexItem && entrie.isIntersecting) {
@@ -147,11 +148,11 @@ onMounted(() => {
         root: null,
         threshold: 1,
     })
-    if (element.value) element.value.forEach(elem => observer.observe(elem));
+    if (element.value) element.value.forEach(elem => observer.value?.observe(elem));
 })
 
 onBeforeUnmount(() => {
-    if (element.value) element.value?.forEach(elem => new IntersectionObserver().unobserve(elem))
+    if (element.value) element.value.forEach(elem => observer.value?.unobserve(elem))
 })
 
 </script>
