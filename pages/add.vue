@@ -45,6 +45,9 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+    title: 'Add page'
+})
 
 const { createAlert } = useAlert()
 const { userData } = useStoreUser()
