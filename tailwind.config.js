@@ -42,20 +42,26 @@ module.exports = {
         '8': '1.2',
         '9': '1.2',
         '10': '1.2',
+      },
+      screens: {
+        'xs': '480px'
       }
     },
-    screens: {
-      '2xl': { 'max' :'1536px'},
+    // screens: {
+    //   '2xl': { 'max' :'1536px'},
 
-      'xl': { 'max' :'1280px'},
+    //   'xl': { 'max' :'1280px'},
 
-      'lg': { 'max' :'1024px'},
+    //   'lg': { 'max' :'1024px'},
 
-      'md': { 'max' :'767px'},
+    //   'md': { 'max' :'767px'},
 
-      'sm': { 'max' : '640px'},
-      'xs': { 'max' : '320px'},
-    },
+    //   'sm': { 'max' : '640px'},
+    //   'xs': { 'max' : '320px'},
+    // },
+    container: {
+      center: true
+    }
   },
   plugins: [],
 }

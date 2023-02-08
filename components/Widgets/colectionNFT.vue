@@ -1,6 +1,7 @@
 <template>
     <section>
-        <EntitiesSladerBase :data="data" :container-class="'[grid-auto-columns:calc(100%/3)] pb-4'">
+        <EntitiesSladerBase :data="data"
+        :container-class="'lg:[grid-auto-columns:calc(100%/3)] sm:[grid-auto-columns:calc(100%/2)] [grid-auto-columns:calc(100%)] pb-4'">
             <template #header><slot name="title"></slot></template>
             <template #item="{ elem }">
                 <EntitiesItemColectionCard :data="elem" v-if="elem"/>

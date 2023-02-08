@@ -18,19 +18,22 @@
         @apply h-[70vh] max-w-[943px] w-full lg:w-[calc(100vw-2rem)]
     }
     .slader__container{
-        @apply -mx-4  xl:-mx-3 sm:-mx-2 mb-4
+        @apply -mx-4  xl:-mx-3 -mx-2  mb-4
     }
     .slader__item {
         @apply flex snap-start px-4 xl:px-3 sm:px-2
     }
     .header__link {
-        @apply text-lg text-white hover:text-rose-600 hover:underline decoration-rose-600 underline-offset-8 transition-all
+        @apply md:text-lg text-white hover:text-rose-600 hover:underline decoration-rose-600 underline-offset-8 transition-all 
     }
     .decor-circle{
-        @apply w-2 h-2 aspect-square bg-white rounded-full inline-block
+        @apply md:w-2 md:h-2 w-1.5 h-1.5 aspect-square bg-white rounded-full inline-block
     }
     .header__container {
-        @apply top-0 left-0 w-full transition-all py-8
+        @apply top-0 left-0 w-full transition-all 
+    }
+    .gallery__container{
+        @apply lg:grid-cols-3 sm:grid-cols-2 xl:gap-8 md:gap-6 sm:gap-4 grid-cols-1 gap-4
     }
 }
 *,::after, ::before{

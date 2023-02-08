@@ -1,35 +1,36 @@
 <template>
     <div class="flex h-full">
-        <div class="w-6/12 relative z-20">
-            <div class="border-2 border-rose-600 border-r-0 h-full bg-white">
-                <div class="p-6 pr-0">
+        <div class="lg:w-6/12 sm:w-7/12 w-full relative z-0">
+            <div class="xs:border-2 border-0 border-rose-600 sm:border-r-0 h-full bg-white">
+                <div class="lg:p-6 sm:p-4 p-2">
                     <div class="flex items-center">
-                        <div class="w-20 aspect-square relative rounded-full border-rose-600 border overflow-hidden">
+                        <div class="lg:w-20 md:w-16 p-1 w-12 aspect-square relative rounded-full border-rose-600 border overflow-hidden">
                             <img :src="data.author.profileImage" alt="user">
                         </div>
-                        <div class="pl-4">
-                            <p class="text-xl font-medium mb-2">{{
+                        <div class="lg:pl-4 pl-2">
+                            <p class="lg:text-xl font-medium mb-2 md:text-lg">{{
                                 data.author.name ? data.author.name :
-                                data.author.username
+                                data.author.usernames
                             }}</p>
                             <SharedOtherStar :quantity-star="data.ranting" />
                         </div>
                     </div>
-                    <div class="py-4">
-                        <p class="text-xl">{{ data.text }}</p>
+                    <div class="lg:py-4 py-2 -z-10">
+                        <p class="xl:text-xl lg:text-lg xs:text-base text-sm"
+                        >{{ isMobile && data.text.length > 120 ? data.text.slice(0, 120) + '...' : data.text }}</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="w-2/12 relative z-10">
-            <div class="skew-x-[-24deg] origin-top-left h-full border-white border-r-[10px] bg-white">
+        <div class="lg:w-2/12 sm:w-1/12 relative -z-10 sm:block hidden">
+            <div class="lg:skew-x-[-24deg] md:skew-x-[-10deg] sm:skew-x-[-6deg] origin-top-left h-full border-white border-r-[10px] bg-white">
                 <div class="h-full border-2 border-rose-600 border-l-transparent -ml-1"></div>
             </div>
 
         </div>
-        <div class="w-4/12 relative z-0 ">
-            <div class="relative h-full -ml-36 overflow-hidden">
-                <img :src="data.card.img" alt="" class="absolute top-1/2 right-1/2 min-h-[103%] min-w-[103%] translate-x-1/2 -translate-y-1/2">
+        <div class="w-4/12 relative -z-20 sm:block hidden">
+            <div class="relative h-full lg:-ml-36 -ml-12 overflow-hidden">
+                <img :src="data.card.img" alt="" class="absolute top-1/2 right-1/2 min-h-[103%] min-w-[103%] translate-x-1/2 -translate-y-1/2 object-cover">
             </div>
         </div>
     </div>
@@ -37,5 +38,7 @@
 
 <script setup lang="ts">
 import { CommentUser } from "@/utils/type";
+
+const { isMobile } = useDevice()
 defineProps<{ data: CommentUser }>()
 </script> 

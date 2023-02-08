@@ -11,9 +11,11 @@
 </template>
 
 <script setup lang="ts">
+
+const { isMobile } = useDevice()
 const { data, error } = await productSearchByCategor({
     where: { news: true },
-    take: 9,
+    take: isMobile ? 8 : 9,
     ...selectNFTCard({ author: { ...selectUserForCard()} })
 }, 'galleryCard')  
 

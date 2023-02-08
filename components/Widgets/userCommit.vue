@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="z-10">
         <slot name="title"></slot>
         <div>
             <EntitiesSladerBase :data="data">
@@ -9,12 +9,12 @@
                     </div>
                 </template>
                 <template #bottom="{ indexActiveButton, updateScrolLeftSlader }">
-                    <div class="pt-12">
+                    <div class="2xl:pt-12 lg:pt-8 xs:pt-4 pt-0">
                         <ul class="flex justify-center">
                             <li v-for="item in data.length" :key="item" class="mx-1 cursor-pointer"
                             @click="updateScrolLeftSlader(item - 1)">
                                 <div class=" h-2 rounded-full transition-all"
-                                :class="[ (item - 1) === indexActiveButton ? 'w-16 bg-rose-600' : 'w-8 bg-gray-300' ]"></div>
+                                :class="[ (item - 1) === indexActiveButton ? 'xs:w-16 w-12 bg-rose-600' : 'xs:w-8 w-6 bg-gray-300' ]"></div>
                             </li>
                         </ul>
                     </div>

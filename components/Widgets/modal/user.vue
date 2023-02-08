@@ -1,7 +1,7 @@
 <template>
-       <EntitiesModalWindowTransition class="h-min w-[450px] sm:w-[calc(100vw-2rem)] z-50" :active="stage">
-        <div class="py-8 px-12 rounded-3xl bg-gradient-to-br 
-        sm:py-6 sm:px-6" :class="[userData ? 'to-purple-300 from-white' : 'from-indigo-500 to-purple-600']">
+       <EntitiesModalWindowTransition class="h-min sm:w-[450px] w-[calc(100vw-1rem)] z-50" :active="stage">
+        <div class="py-6 px-6 rounded-3xl bg-gradient-to-br 
+        sm:py-8 sm:px-12" :class="[userData ? 'to-purple-300 from-white' : 'from-indigo-500 to-purple-600']">
             <template v-if="userData">
                 <EntitiesAuthMain />
             </template>

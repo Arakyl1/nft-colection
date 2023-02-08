@@ -29,7 +29,7 @@ export interface Colection{
 export interface CommentUser {
     id: number,
     ranting: number,
-    text: true,
-    card: { img: string, id: true }
+    text: string,
+    card: { img: string, id: number }
     author: User
 }

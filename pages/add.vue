@@ -1,5 +1,5 @@
 <template>
-    <div class="py-32">
+    <div class="py-8">
         <SharedSectionHeader>
             <template #title>Add NFT</template>
         </SharedSectionHeader>

@@ -23,10 +23,10 @@
     </section>
 </template>
 <script setup lang="ts">
-
+const { isMobile } = useDevice()
 const data = await productgetTopUser({
     orderBy: { ranting: 'asc' },
-    take: 9,
+    take: isMobile ? 8 : 9,
     ...selectUserForCard({ ranting: true, card: true })
 })
 

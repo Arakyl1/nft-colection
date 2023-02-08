@@ -6,6 +6,7 @@ export default defineNuxtConfig ({
   // },
   modules: [
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/device',
     ['@pinia/nuxt', {
         autoImports: ['defineStore', 'storeToRefs', 'acceptHMRUpdate'],
       }
@@ -19,4 +20,7 @@ export default defineNuxtConfig ({
     jwtAccessSecret: process.env.JWT_ACCESS_TOKEN_SECRET,
     jwtRefrechSecret: process.env.JWT_REFRESH_TOKEN_SECRET,
   },
+  device: {
+    refreshOnResize: true
+  }
 })

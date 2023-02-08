@@ -2,23 +2,23 @@
     <section>
         <slot name="title"></slot>
         <div>
-            <div class="flex flex-nowrap">
-                <div class="w-1/2 ">
+            <div class="flex lg:flex-nowrap flex-wrap">
+                <div class="xl:w-1/2 lg:w-1/3 w-full lg:mb-0 mb-4">
                     <img src="@/assets/img/png/main/other.png" alt="">
                 </div>
-                <div class="w-1/2 py-20 pl-4">
-                    <p class="mb-6">
+                <div class="2xl:py-20 xl:py-16 lg:py-12 lg:pl-8 xl:w-1/2 lg:w-2/3 w-full pl-0">
+                    <p class="sm:mb-6 mb-4 xs:text-base text-sm">
                         Written in. This book is a treatise on the theory of ethics
                         very popular during the Renaissance.The first line of
                         Lorem Ipsum, "Lorem ipsum dolor sit amet
                     </p>
-                    <p class="mb-6">
+                    <p class="sm:mb-6 mb-4 xs:text-base text-sm">
                         The generated Lorem Ipsum is therefore always free from
                         repetition, injected humour, or non-characteristic
                         words etc
                     </p>
-                    <ul class="mb-6">
-                        <li v-for="(item, index) in list" :key="index" class="mb-4">
+                    <ul class="sm:mb-6 mb-4">
+                        <li v-for="(item, index) in list" :key="index" class="sm:mb-4 mb-2 xs:text-base text-sm">
                            <span class="w-2 h-2 bg-rose-500 inline-block mr-2"></span> {{  item }}
                         </li>
                     </ul>
