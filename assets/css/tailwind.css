@@ -35,6 +35,28 @@
     .gallery__container{
         @apply lg:grid-cols-3 sm:grid-cols-2 xl:gap-8 md:gap-6 sm:gap-4 grid-cols-1 gap-4
     }
+    .stait-active--fill {
+        @apply fill-rose-500
+    }
+    .stait-deactive--fill {
+        @apply fill-transparent
+    }
+    .alert-model-1 {
+        @apply px-4 py-2 h-min rounded-full
+    }
+    .button-1 {
+        @apply rounded-full border-0 after:content-none hover:bg-rose-600 hover:text-white transition-all
+    }
+    .button-2 {
+        @apply rounded-full border border-gray-300 hover:border-rose-600 hover:bg-rose-600 hover:text-white after:content-none transition-all
+    }
+    .input-1 {
+        @apply focus-visible:outline-0 border border-rose-500 text-gray-700 rounded-2xl
+    }
+    .border-outline-none {
+        @apply  border-none outline-none focus-visible:border-none focus-visible:outline-0
+    }
+    
 }
 *,::after, ::before{
     font-family: 'DM Sans', sans-serif;

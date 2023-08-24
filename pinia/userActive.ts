@@ -1,9 +1,9 @@
+import { UserBase } from "~~/type/intex"
 
-import { User } from "@/utils/type";
 export const userActive = defineStore('userActive', () => {
-    const userData = ref<User | null>(null)
+    const userData = ref<UserBase | null>(null)
 
-    function updateActiveUser(user: User | null) {
+    function updateActiveUser(user: UserBase | null) {
         userData.value = user
     }
     return { userData, updateActiveUser }

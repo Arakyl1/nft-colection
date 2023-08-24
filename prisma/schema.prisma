@@ -11,98 +11,118 @@ datasource db {
 }
 
 model NFTCard {
-  id Int @id @default(autoincrement())
-  img String
-  price Int
-  top Boolean @default(false)
-  news Boolean @default(true)
-  currency String
-  quantity Int @default(0)
-  date DateTime @default(now())
+  id       Int      @id @default(autoincrement())
+  img      String
+  price    Int
+  currency Currency @default(USD)
+  quantity Int      @default(0)
+  createAt DateTime @default(now())
 
-  author User @relation(fields: [authorId], references: [id])
+  author   User @relation(fields: [authorId], references: [id])
   authorId Int
 
   attributes Attributes[]
-  colection Colection[]
-  commit Comment[]
+  colection  Colection[]
+  reviews    Comment[]
+}
+
+enum Currency {
+  USD
+  ETH
+  BTS
 }
 
 model Attributes {
-  id Int @id @default(autoincrement())
-  name String
+  id        Int         @id @default(autoincrement())
+  name      String @unique
+  createAt  DateTime    @default(now())
   nftCardId NFTCard[]
-  blogCard BlogCard[]
+  blogCard  BlogCard[]
+  colection Colection[]
 }
 
 model BlogCard {
-  id Int @id @default(autoincrement())
-  title String
-  text String
-  img String
-  ranting Int @default(0)
-  date DateTime @default(now())
-  
-  author User @relation(fields: [authorId], references: [id])
+  id       Int      @id @default(autoincrement())
+  title    String
+  text     String
+  createAt DateTime @default(now())
+
+  author   User @relation(fields: [authorId], references: [id])
   authorId Int
 
+  image      Image[]
   attributes Attributes[]
+  reviews    Comment[]
+}
+
+model Image {
+  id         Int      @id @default(autoincrement())
+  link       String
+  main       Boolean  @default(false)
+  blod       BlogCard @relation(fields: [blodCardId], references: [id])
+  blodCardId Int
 }
 
 model Colection {
-  id Int @id @default(autoincrement())
-  title String
-  text String @default("")
-  ranting Int @default(0)
-  date DateTime @default(now())
+  id       Int      @id @default(autoincrement())
+  title    String
+  text     String   @default("")
+  views    Int      @default(0)
+  createAt DateTime @default(now())
 
-  nFTCard NFTCard[]
+  nFTCard    NFTCard[]
+  attributes Attributes[]
 
-  author User @relation(fields: [authorId], references: [id])
+  author   User      @relation(fields: [authorId], references: [id])
   authorId Int
+  reviews  Comment[]
 }
 
 model User {
-  id Int @id @default(autoincrement())
-  email   String  
-  name    String?
-  username String @unique
-  password String
+  id           Int      @id @default(autoincrement())
+  email        String
+  name         String?
+  username     String   @unique
+  password     String
   profileImage String?
-  createAt DateTime @default(now())
+  createAt     DateTime @default(now())
 
-  quote String?
-  ranting Int @default(0)
-  
-  blogcard BlogCard[]
-  card NFTCard[]
-  colection Colection[]
-  commit Comment[]
-  followedBy User[]  @relation("UserFollows")
-  following  User[]  @relation("UserFollows")
+  quote   String?
+  ranting Int     @default(0)
+
+  blogcard     BlogCard[]
+  card         NFTCard[]
+  colection    Colection[]
+  reviews      Comment[]
+  followedBy   User[]         @relation("UserFollows")
+  following    User[]         @relation("UserFollows")
   refrechToken RefrechToken[]
 }
 
 model Comment {
-  id Int @id @default(autoincrement())
-  ranting Int?
-  text String?
+  id       Int      @id @default(autoincrement())
+  rating   Int?
+  text     String?
   createAt DateTime @default(now())
 
-  card NFTCard @relation(fields: [cardId], references: [id])
-  cardId Int
-
-  author User @relation(fields: [authorId], references: [id])
+  author   User @relation(fields: [authorId], references: [id])
   authorId Int
+
+  card   NFTCard? @relation(fields: [cardId], references: [id])
+  cardId Int?
+
+  blogCard   BlogCard? @relation(fields: [blogCardId], references: [id])
+  blogCardId Int?
+
+  colection   Colection? @relation(fields: [colectionId], references: [id])
+  colectionId Int?
 }
 
 model RefrechToken {
-  id Int @id @default(autoincrement())
-  token String @unique
-
+  id       Int      @id @default(autoincrement())
+  token    String   @unique
   createAt DateTime @default(now())
-  updateAta DateTime @updatedAt
-  
-  user User @relation(fields: [userId], references: [id])
+
+  user   User @relation(fields: [userId], references: [id])
   userId Int
 }

@@ -1,0 +1,1 @@
+export type sladerValueScroll = { current: number, max: number }

@@ -1,46 +1,62 @@
-import { uploadImageCloudinary } from "@/server/utils/cloudibary";
-import formidable from 'formidable';
+import { v2 as cloudinary } from 'cloudinary'
+import formidable, { type Fields, type Files } from 'formidable';
 
-const addImageCloud = async (key: any, obj: any) => {
-    
-    const file = obj[key].filepath
-    const uploadImage = await uploadImageCloudinary(file)
-    const data = {
-        url: uploadImage.url,
-        secretUrl: uploadImage.secure_url,
-    }
-    return data
+const uploadImageCloudinary = async (file: string) => {
+    return await cloudinary.uploader.upload(file, {
+        height: 800,
+        width: 800,
+        crop: "fit",
+        fetch_format: "webp",
+        folder: 'nft-market-place',
+        uploadPreset: 'your-upload-preset',
+    })
 }
 
-export default defineEventHandler(async(event) => {
-    
-    const form = formidable({})
-    
-    const response  = await new Promise((resolse, reject) => {
-        
-        form.parse(event.req, (err, fields, files) => {
-            if (err) {
-                reject(err)
+const addImageCloud = async (filepath: string, num: number): Promise<
+    { url: string, secretUrl: string } | null
+> => {
+    try {
+        if (num <= 5) {
+            const uploadImage = await uploadImageCloudinary(filepath)
+            return {
+                url: uploadImage.url,
+                secretUrl: uploadImage.secure_url,
             }
-            resolse({ fields, files })
-        })
+        } else {
+            return null
+        }
+    } catch (error) {
+        return addImageCloud(filepath, ++num)
+    }
+}
+
+export default defineEventHandler(async (event) => {
+
+    const config = useRuntimeConfig()
+    cloudinary.config({
+        cloud_name: config.cloudinaryName,
+        api_key: config.cloudinaryApiKey,
+        api_secret: config.cloudinaryApiSecret
     })
-    
-    const { field, files } = response
 
-    
+    const params = getQuery(event)
+    let response : { url: string; secretUrl: string } | null = null
+    if ('type' in params && params.type === 'File') {
+        const form = formidable({})
+        const { fields, files }: { fields: Fields, files: Files } = await new Promise(
+            (resolse, reject) => {
+                form.parse(event.req, (err, fields, files) => {
+                    if (err) reject(err)
+                    resolse({ fields, files })
+                })
+            })
 
-    let addFiles: Promise<{
-        url: string;
-        secretUrl: string;
-    } | "Error">[] = Object.keys(files).map(async(key)=> {
-            try {
-              return await addImageCloud(key, files)
-            } catch {
-              return "Error"
-            }
-        })
-    const data = await Promise.all(addFiles)
-   
-    return data
+        const _file = Array.isArray(files.file) ? files.file[0] : files.file
+        return await addImageCloud(_file.filepath, 0)
+    } else if ('type' in params && params.type === 'String') {
+        const body = await readBody<{ link: string }>(event)
+        console.log(body)
+        return await addImageCloud(body.link, 0)
+    }
+    
 })

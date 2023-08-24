@@ -1,25 +1,34 @@
 import { JwtPayload } from "jsonwebtoken"
-import { prismaFindUnique } from "~~/server/db/methods"
-import { decodeRefrechToken, generateTokens } from "~~/server/utils/jwt"
-import { returnParamsMain, returnParamsAditional } from "@/server/utils/searchParams";
+import { decodeRefrechToken, generateTokens } from "../../utils/jwt"
+import prisma from "../../db";
+import { CookieKey } from "@/type/index";
+import { isObject } from "../../utils/other";
+import { GET_CONTENT_KEY } from "../../utils/other";
 
-export default defineEventHandler(async(event) => {
+export default defineEventHandler(async(event) => {    
+    const keyCookie: CookieKey = 'refrech_token'
+    const refrechToken: string | null = getCookie(event, keyCookie) || null
 
-    const refrechToken: string | undefined = getCookie(event, 'refrech_token')
-    if (!refrechToken) return { message: "Refrech token is invalid one" }
-    
-    const rToken = await prismaFindUnique('refrechToken', { where: { token: refrechToken }})
-    if (!rToken)  return { message: "Refrech token is invalid" }
-
+    if (!refrechToken) return { messageKey: GET_CONTENT_KEY('REFRECH_TOKEN_ABSENT_IN_COOKEI') }
+    const rToken = await prisma.refrechToken.findUnique({ where: { token: refrechToken }})
+    if (!rToken)  return { message: GET_CONTENT_KEY('REFRECH_TOKEN_ABSENT_IN_DB') }
     const token: string | JwtPayload | null = decodeRefrechToken(refrechToken)
     
     try {
-        const searchParams = returnParamsMain({ id: token.userId}, returnParamsAditional())
-        const user = await prismaFindUnique('user', searchParams)
         
-        const { accessToken } = await generateTokens(user)
-        return { accessToken }
+        if (token && isObject(token) && 'id' in token) {        
+            const user = await prisma.user.findUnique({
+                where: { id: token.id },
+                select: { id: true }
+            })
+            
+            if (!user) return
+            const { accessToken } = await generateTokens(user)
+            return { accessToken }
+        } else {
+            return { message: GET_CONTENT_KEY('REFRECH_TOKEN_INVALID') }
+        }
     } catch (error) {
-        return { message: "Something went wrong" }
+       return { message: GET_CONTENT_KEY('REFRECH_TOKEN_ERROR') }
     }
 })

@@ -1,8 +1,10 @@
+import { BasketItem } from "@/type/intex";
+
 export const basketProduct = defineStore('basketProduct', () => {
     
-    const basket = ref<any>([])
+    const basket = ref<BasketItem[]>([])
 
-    function addBasketProduct(item: object) { 
+    function addBasketProduct(item: BasketItem) { 
         basket.value.push(item)
         mySetItem('basket', basket.value)
     }

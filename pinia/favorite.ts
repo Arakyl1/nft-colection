@@ -1,6 +1,7 @@
+
 export const favoriteProduct = defineStore('favoriteProduct', () => {
 
-    const favorite = ref(new Set([]))
+    const favorite = ref(new Set<number>([]))
 
     onBeforeMount(() =>{
         const localStorage = myGetItem('favorite')

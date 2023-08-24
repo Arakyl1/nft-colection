@@ -1,11 +1,15 @@
-import { prismaDelete } from "~~/server/db/methods"
-import { sendRefrechToken } from "~~/server/utils/jwt"
+
+import { CookieKey } from "~/type/index"
+import prisma from "../../db"
+import { sendRefrechToken } from "../../utils/jwt"
 
 export default defineEventHandler(async(event) => {
     try {
-        const cookiesRefrech = getCookie(event, 'refrech_token')
+        const keyCookie: CookieKey = 'refrech_token'
+        const cookiesRefrech = getCookie(event, keyCookie)
         if (cookiesRefrech) {
-            prismaDelete('refrechToken', { where: { token: cookiesRefrech } })
+            deleteCookie(event, keyCookie)
+            await prisma.refrechToken.delete({ where: { token: cookiesRefrech } })
         }
     } catch (error) {
         return error

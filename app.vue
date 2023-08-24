@@ -1,33 +1,82 @@
 <template>
   <div>
-    <div
-    class="fixed top-0 left-0 w-full bg-stone-900 z-30 ap0__mask"
-    :class="[{ active: active }]"
-    @click="updateMask(false)"></div>
     <div>
-      <WidgetsTheHeader class="z-20"/>
-      <WidgetsMainHeader class="z-10"/>
+      <OrganismsHeader class="z-20"/>
+      <TemplatesPageMainHeader class="z-10"/>
       <div class="container sm:px-4 xs:px-3 px-2 z-10 min-h-screen">
         <NuxtPage :transition="{ name: 'page-transition' }"/>
       </div>
-      <WidgetsTheFotter class="z-20"/>
+      <OrganismsFooter class="z-20"/>
     </div>
     <Transition name="alert">
-      <EntitiesAlert/>
+      <AtomOtherAlert/>
     </Transition>
-    <WidgetsModalUser/>
-    <EntitiesHeaderMenuMobaile class="z-50" v-if="isMobile"/>
+    <OrganismsAuth/>
+    <OrganismsMenuMobaile class="z-50 sm:hidden"/>
   </div>
 </template>
 
 <script setup lang="ts">
-const { initAuth } = useAuth()
-const { isMobile } = useDevice()
-const { active, updateMask } = useWindowMask()
+import { user as _user } from "@/stores/user";
+import { Cached, Content } from "@/type/index";
 
-onBeforeMount(() => {
-  initAuth()   
+
+const route = useRoute()
+const storeUser = _user()
+const { data: _userData } = storeToRefs(storeUser)
+const { initAuth } = useAuth()
+const _content = useState<Content | null>('CONTENT_APP', () => null)
+const headers = useRequestHeaders()
+
+type useAuth = ReturnType<typeof useAuth>
+type InitAuthResponse = Cached<useAuth['initAuth']>
+
+
+onServerPrefetch(async () => {
+  const res = await initAuth()
+  if (Object.prototype.hasOwnProperty.call(headers, 'accept-language')) {
+    const userLocalLanguage = getLanguageUser(headers['accept-language']!)
+    const keyContent = userLocalLanguage.find(_ => _[0] !== 'en') || ['en', 0.9]
+    const key = keyContent[0].toString()
+    try {
+      import('@/content/language/ru.js').then(res => _content.value = res.content)
+    //   import(`@/content/language/${key || 'ru'}.js`).then(res => {  
+    //   if (res && 'content' in res) {
+    //     _content.value = res.content
+    //     console.log('read content find')
+    //   }
+    // })
+    } catch (error) {
+      import('@/content/language/ru.js').then(res => _content.value = res.content)
+      console.log('read content catch')
+    }  
+  } else {
+    console.log('other Data')
+    import('@/content/language/ru.js').then(res => _content.value = res.content )
+    console.log('read content base')
+  }
+ 
+  await checkRes(res)
 })
+
+
+async function checkRes(res: InitAuthResponse) {
+  if (res) {
+    if ('user' in res && res.user) {
+      storeUser.update(res.user)
+    } else if ('messageKey' in res && res.messageKey && _content.value) {
+      console.log(_content.value[res.messageKey as never])
+    }
+  }
+}
+// const { initAuth } = useAuth()
+// const { isMobile } = useDevice()
+// const { windowMask: _windowMask } = useStore()
+// const { active, updateMask } = _windowMask()
+
+// onBeforeMount(() => {
+//   initAuth()   
+// })
 </script>
 
 <style lang="css">
