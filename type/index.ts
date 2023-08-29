@@ -1,6 +1,7 @@
 import { Prisma, User } from "@prisma/client";
 
 export type NAMEAPP = 'NFT_MARKET'
+export type CUSTOM_EVENT_NAME = 'show-modal-basket' | 'show-modal-favorite' | 'create-user' | 'showMenu'
 
 
 // export const userCardBaseParamsSelect = selectUserForCard({})

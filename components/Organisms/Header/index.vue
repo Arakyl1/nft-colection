@@ -62,7 +62,7 @@ function updateScrollTop() {
 }
 
 function showMenu() {
-    window.dispatchEvent(new CustomEvent('showMenu'))
+    window.dispatchEvent(new CustomEvent(GET_CUSTOM_EVENT_NAME('showMenu')))
 }
 
 </script>

@@ -111,6 +111,7 @@
 </template>
 
 <script setup lang="ts">
+import { temp1 } from "#imports";
 import { ROAD_MAP_LIST } from "@/utils/data";
 
 const { isMobile } = useDevice()
@@ -118,9 +119,10 @@ const element = ref<HTMLElement[] | null>(null)
 const observer = ref<IntersectionObserver | null>(null)
 
 
-
-const transformDate = (date: string) => formatter(temp1('en-US')).format(new Date(date))
-
+function transformDate(date:string) {
+    const format = new Intl.DateTimeFormat('en-US', temp1);
+    return format.format(new Date(date))
+}
 onMounted(() => {
     observer.value = new IntersectionObserver((entries) => {
         entries.forEach(entrie => {

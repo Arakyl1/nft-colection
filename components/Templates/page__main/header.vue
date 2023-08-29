@@ -1,6 +1,6 @@
 <template>
     <div class="h-screen relative overflow-hidden" v-if="route.path === '/'">
-        <div class="absolute top-0 left-0 w-screen h-screen bg-gradient-to-r from-[#782C9C] to-[#192063] -z-20"></div>
+        <div class="absolute top-0 left-0 w-screen min-h-screen bg-gradient-to-r from-[#782C9C] to-[#192063] -z-20"></div>
         <div class="container sm:px-4 xs:px-3 px-2 flex flex-col md:justify-between justify-around h-full relative sm:pt-48 xs:pt-40 pt-32">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 md:scale-100 xs:scale-125 scale-[1.75]">
                 <img src="@/assets/img/png/header/bg-1.png" alt="asd" class="opacity-30">
@@ -51,6 +51,6 @@
 <script setup lang="ts">
 const route = useRoute()
 function createAccount() {
-    window.dispatchEvent(new CustomEvent('create-user'))
+    window.dispatchEvent(new CustomEvent(GET_CUSTOM_EVENT_NAME('create-user')))
 }
 </script>

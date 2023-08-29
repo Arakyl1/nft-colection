@@ -14,6 +14,6 @@ const storeFavorite = _favorite()
 const { data: favoriteData } = storeToRefs(storeFavorite)
 
 function showModalFavorite() {
-    window.dispatchEvent(new CustomEvent('show-modal-favorite'))
+    window.dispatchEvent(new CustomEvent(GET_CUSTOM_EVENT_NAME('show-modal-favorite')))
 }
 </script>

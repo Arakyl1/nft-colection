@@ -1,5 +1,5 @@
-import { Attributes, Prisma } from "@prisma/client";
-import { NAMEAPP, CONTENT_KEY, KeysMatchingWrite, TypeMapFindMany, getModelName, TypeMapCreate, KeysMatchingWriteOuther } from "../type/index";
+import { Prisma } from "@prisma/client";
+import { NAMEAPP, CONTENT_KEY, CUSTOM_EVENT_NAME } from "../type/index";
 
 
 type sizeI = 28|48|56|60|64|72|80|92|96|224|320|480
@@ -104,6 +104,7 @@ export const localRemove = (key: KeyLocalStorage) => localStorage.removeItem(key
 
 
 export const GET_CONTENT_KEY = (key: CONTENT_KEY) => key
+export const GET_CUSTOM_EVENT_NAME = (key: CUSTOM_EVENT_NAME) => key
 
 export const getLanguageUser = (locale: string) => locale.split(',').map(_ => _.split(';')).filter(_ => _.length > 1 && _[0].split('-').length === 1).map(_ => [_[0],parseFloat(_[1].replace('q=','')) ])//.map(_ => _[0])
 

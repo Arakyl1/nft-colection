@@ -61,12 +61,15 @@ import { basket as _basket } from "@/stores/basket";
 import { alert as _alert } from "@/stores/alert";
 import { favorite as _favorite } from "@/stores/favorite";
 import CreateIcon from "@/content/icons/create";
+import { Content } from 'type';
 
 
 interface ProductCard extends NFTCard {
     [x: string]: any;
     author: User
 }
+
+const _content = useState<Content>('CONTENT_APP')
 const props = defineProps<{ data: ProductCard }>()
 const storeAlert = _alert()
 const storeBasket = _basket()

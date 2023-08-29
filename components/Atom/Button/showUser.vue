@@ -13,6 +13,6 @@ const storeUser = _user()
 const { data: _userData } = storeToRefs(storeUser)
 
 function showModalUser() {
-    window.dispatchEvent(new CustomEvent('create-user'))
+    window.dispatchEvent(new CustomEvent(GET_CUSTOM_EVENT_NAME('create-user')))
 }
 </script>

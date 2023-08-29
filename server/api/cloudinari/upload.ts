@@ -1,23 +1,23 @@
 import { v2 as cloudinary } from 'cloudinary'
 import formidable, { type Fields, type Files } from 'formidable';
 
-const uploadImageCloudinary = async (file: string) => {
+const uploadImageCloudinary = async (file: string, folderName: string) => {
     return await cloudinary.uploader.upload(file, {
         height: 800,
         width: 800,
         crop: "fit",
         fetch_format: "webp",
-        folder: 'nft-market-place',
+        folder: folderName || 'test',
         uploadPreset: 'your-upload-preset',
     })
 }
 
-const addImageCloud = async (filepath: string, num: number): Promise<
+const addImageCloud = async (filepath: string, num: number, folderName: string): Promise<
     { url: string, secretUrl: string } | null
 > => {
     try {
         if (num <= 5) {
-            const uploadImage = await uploadImageCloudinary(filepath)
+            const uploadImage = await uploadImageCloudinary(filepath, folderName)
             return {
                 url: uploadImage.url,
                 secretUrl: uploadImage.secure_url,
@@ -26,7 +26,7 @@ const addImageCloud = async (filepath: string, num: number): Promise<
             return null
         }
     } catch (error) {
-        return addImageCloud(filepath, ++num)
+        return addImageCloud(filepath, ++num, folderName)
     }
 }
 
@@ -36,7 +36,7 @@ export default defineEventHandler(async (event) => {
     cloudinary.config({
         cloud_name: config.cloudinaryName,
         api_key: config.cloudinaryApiKey,
-        api_secret: config.cloudinaryApiSecret
+        api_secret: config.cloudinaryApiSecret,
     })
 
     const params = getQuery(event)
@@ -52,11 +52,11 @@ export default defineEventHandler(async (event) => {
             })
 
         const _file = Array.isArray(files.file) ? files.file[0] : files.file
-        return await addImageCloud(_file.filepath, 0)
+        return await addImageCloud(_file.filepath, 0, config.cloudinaryFolderName)
     } else if ('type' in params && params.type === 'String') {
         const body = await readBody<{ link: string }>(event)
         console.log(body)
-        return await addImageCloud(body.link, 0)
+        return await addImageCloud(body.link, 0, config.cloudinaryFolderName)
     }
     
 })

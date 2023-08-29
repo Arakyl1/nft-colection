@@ -23,9 +23,13 @@
 </template>
 
 <script setup lang="ts">
+import { temp1 } from '#imports';
 import { BlogCard } from '@prisma/client';
 
 defineProps<{ data: BlogCard }>()
 
-const transformDate = (date: string) => formatter(temp1('en-US')).format(new Date(date))
+function transformDate(date:string) {
+    const format = new Intl.DateTimeFormat('en-US', temp1);
+    return format.format(new Date(date))
+}
 </script>

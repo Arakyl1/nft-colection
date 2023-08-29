@@ -14,6 +14,6 @@ const storeBasket = _basket()
 const { data: basketData } = storeToRefs(storeBasket)
 
 function showModalBasket() {
-    window.dispatchEvent(new CustomEvent('show-modal-basket'))
+    window.dispatchEvent(new CustomEvent(GET_CUSTOM_EVENT_NAME('show-modal-basket')))
 }
 </script>
