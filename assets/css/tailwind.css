@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+    --input-valid: #4ade80;
+    --input-invallid: #EF5959;
+}
+
 @layer components {
     .bt-base{
         @apply overflow-hidden cursor-pointer transition-all focus-visible:outline-gray-100 
@@ -52,6 +57,15 @@
     }
     .input-1 {
         @apply focus-visible:outline-0 border border-rose-500 text-gray-700 rounded-2xl
+    }
+    
+    .input--validation {
+        @apply border-none
+        outline-1 outline outline-stone-900
+        focus-visible:outline-yellow-400
+        focus-visible:invalid:outline-[var(--input-invallid)]
+        focus-visible:valid:outline-[var(--input-vallid)]
+        transition-all
     }
     .border-outline-none {
         @apply  border-none outline-none focus-visible:border-none focus-visible:outline-0
