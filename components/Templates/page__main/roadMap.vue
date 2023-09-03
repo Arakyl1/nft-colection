@@ -5,7 +5,7 @@
             <div>
                 <div v-for="item in ROAD_MAP_LIST" :key="item.id" class="lg:mb-4">
                     <div ref="element" :data-index="item.id" class="">
-                        <div class="hidden lg:block" v-if="!isMobile">
+                        <div class="hidden lg:block min-h-[150px]" v-if="!isMobile">
                             <div v-show="item.active" class="h-full flex" :class="[{ 'flex-row-reverse': item.left }]">
                                 <div class="w-5/12 xl:pb-8 pb-4">
                                     <Transition name="show-item"
@@ -126,9 +126,9 @@ function transformDate(date:string) {
 onMounted(() => {
     observer.value = new IntersectionObserver((entries) => {
         entries.forEach(entrie => {
-            const indexItem = entrie.target.dataset.index
-            if (indexItem && entrie.isIntersecting) {
-                ROAD_MAP_LIST[+indexItem - 1].active = true
+            const indexItem = (entrie.target as HTMLElement).dataset.index
+            if (indexItem && isNumeric(indexItem) && entrie.intersectionRatio >= 1) {
+                ROAD_MAP_LIST[parseInt(indexItem) - 1].active = true
             }
         })
 

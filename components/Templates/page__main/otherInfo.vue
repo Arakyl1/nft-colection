@@ -22,7 +22,7 @@
                            <span class="w-2 h-2 bg-rose-500 inline-block mr-2"></span> {{  item }}
                         </li>
                     </ul>
-                    <AtomButtonStandart class="bg-rose-500 text-white px-8 py-2 text-lg">
+                    <AtomButtonStandart class="button-1 bg-rose-500 text-white px-8 py-2 text-lg">
                         Read More
                     </AtomButtonStandart>
                 </div>

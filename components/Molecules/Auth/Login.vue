@@ -1,12 +1,12 @@
 <template>
     <form ref="form">
-        <!-- <h3 class="text-3xl text-center font-medium text-black-500 mb-7">{{ _content?.AUTH_TEXT_TITLE_LOGIN || 'Login' }}</h3> -->
-        <input type="text" class="mb-6" :placeholder="_content?.AUTH_TEXT_PLACEHOLDER_USERNAME || 'username'"
+        <h3 class="text-3xl text-center font-medium text-stone-900 mb-7">{{ _content?.AUTH_TEXT_TITLE_LOGIN || 'Login' }}</h3>
+        <input type="text" class="mb-4 input-1 border-stone-900" :placeholder="_content?.AUTH_TEXT_PLACEHOLDER_USERNAME || 'username'"
             :class="style.input" required aria-required="true" autocomplete="username" :name="modelProp('User', 'username')" />
         <AtomFormPassword :placeholder="_content?.AUTH_TEXT_PLACEHOLDER_PASSWORD || 'password'" autocomplete="current-password"
-            class="text-lg w-full px-4 py-2 rounded-md mb-6" required aria-required="true" :name="modelProp('User', 'password')"/>
-        <AtomButtonStandart @click="onClick()" class="bg-rose-500 rounded-full text-lg text-white w-full py-3">{{
-           _content?.AUTH_TEXT_BUTTOM_LOGIN || 'Login' }} </AtomButtonStandart>
+        :class="style.input" class="mb-6" required aria-required="true" :name="modelProp('User', 'password')"/>
+        <AtomButtonStandart @click="onClick()" class="bg-rose-500 text-white py-3"
+        :class="style.input">{{ _content?.AUTH_TEXT_BUTTOM_LOGIN || 'Login' }} </AtomButtonStandart>
     </form>
 </template>
 
@@ -52,7 +52,7 @@ watch(() => props.reset, () => {
     }
 })
 const style = {
-    input: 'text-lg w-full rounded-full px-5 py-2 focus-visible:outline-0 focus-visible:ring-0 transition'
+    input: 'text-lg w-full rounded-full px-4 py-2 transition'
 }
 
 </script>

@@ -11,7 +11,7 @@
             <div class="mb-4">
                 <template v-for="(elem, index) in list" :key="index">
                     <ul v-if="Array.isArray(elem.data)" class="sm:pt-3 sm:pb-1 sm:pl-2 pt-2 pb-0">
-                        <li v-for="item in elem.data" :key="item" class="mb-2 text-lg hover:text-yellow-500 transition">
+                        <li v-for="item in elem.data" :key="item" class="mb-2 text-lg hover:text-yellow-500 transition cursor-pointer">
                             {{ item }}
                         </li>
                     </ul>
@@ -19,7 +19,7 @@
                 </template>
             </div>
             <AtomButtonStandart @click.stop="logoutUser"
-            class="bg-rose-500 text-white py-3 rounded-full px-5"
+            class="bg-rose-600 text-white py-3 rounded-full px-5"
             >Выйти</AtomButtonStandart>
         </div>
     </div>

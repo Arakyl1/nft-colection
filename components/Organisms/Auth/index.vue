@@ -1,8 +1,8 @@
 <template>
     <AtomModalMask :state="state" :clickFun="update">
         <AtomModalTransition class="h-min sm:w-[450px] w-[calc(100vw-2rem)]" :state="state">
-            <div class="bg-white py-8 px-12 rounded-md w-full h-full
-            sm:py-6 sm:px-6">
+            <div class="bg-white py-6 px-6 rounded-md w-full h-full
+            sm:py-10 sm:px-10">
                 <template v-if="_userData">
                     <MoleculesAuthMain />
                 </template>
@@ -10,7 +10,7 @@
                 <template v-else>
                     <MoleculesAuthLogin v-if="modalLogin" @response="onResponse" :reset="reset"/>
                     <MoleculesAuthRegister v-else @response="onResponse" />
-                    <div class="decor-line mt-6 mb-3"></div>
+                    <div class="decor-line mt-4 mb-3"></div>
                     <p class="text-center text-blue-500 cursor-pointer" @click="modalLogin = !modalLogin"
                     >{{ 
                     _content ? (!modalLogin ? _content.AUTH_TEXT_SPAN_REGISTER : _content.AUTH_TEXT_SPAN_LOGIN) :

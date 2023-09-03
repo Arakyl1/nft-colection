@@ -1,19 +1,19 @@
 <template>
   <div>
     <form class="text-center" ref="form">
-      <!-- <h3 class="text-3xl text-center font-medium text-black-500 mb-7">{{ _content?.AUTH_TEXT_TITLE_REGISTER || 'Register'}}</h3> -->
-      <input type="text" :class="style.input" :placeholder="_content?.AUTH_TEXT_PLACEHOLDER_USERNAME || 'Username'" class="mb-4" required
-        aria-required="true" autocomplete="username" v-model="data.username" />
-      <AtomFormEmail :placeholder="_content?.AUTH_TEXT_PLACEHOLDER_EMAIL || 'Email'" class="text-lg w-full mb-4 px-4 py-2 rounded-md"
+      <h3 class="text-3xl text-center font-medium text-stone-900 mb-7">{{ _content?.AUTH_TEXT_TITLE_REGISTER || 'Register'}}</h3>
+      <input type="text" :class="style.input" class="mb-4 input-1 border-stone-900" :placeholder="_content?.AUTH_TEXT_PLACEHOLDER_USERNAME || 'Username'" required
+        aria-required="true"  autocomplete="username" v-model="data.username" />
+      <AtomFormEmail :placeholder="_content?.AUTH_TEXT_PLACEHOLDER_EMAIL || 'Email'" :class="style.input" class="mb-4"
         aria-required="true" autocomplete="email" required v-model="data.email" />
-      <AtomFormPassword :placeholder="_content?.AUTH_TEXT_PLACEHOLDER_PASSWORD || 'Password'" class="text-lg w-full px-4 py-2 rounded-md"
+      <AtomFormPassword :placeholder="_content?.AUTH_TEXT_PLACEHOLDER_PASSWORD || 'Password'" :class="style.input" class=""
         aria-required="true" autocomplete="new-password" required v-model="data.password" />
-      <label class="text-xs text-gray-500 pt-1 pb-2 block">{{ _content?.TEXT_AUTH_REGISTER_PASSWORD_INFO || ''}}</label>
+      <label class="text-xs text-gray-500 pt-1 pb-1 block">{{ _content?.TEXT_AUTH_REGISTER_PASSWORD_INFO || ''}}</label>
       <AtomFormPassword :placeholder="_content?.AUTH_TEXT_PLACEHOLDER_PASSWORD_D || 'Repeat password'"
-        class="text-lg w-full px-4 py-2 rounded-md mb-8" aria-required="true" autocomplete="new-password" required
+      :class="style.input" class="mb-8" aria-required="true" autocomplete="new-password" required
         v-model="data.repeartPassword" />
 
-      <AtomButtonStandart @click="userRegister()" class="bg-rose-500 rounded-full text-lg text-white w-full py-3">
+      <AtomButtonStandart @click="userRegister()" :class="style.input" class="bg-rose-500 text-white py-3">
         {{ _content?.AUTH_TEXT_BUTTOM_REGISTER || "Register" }}
       </AtomButtonStandart>
     </form>
@@ -75,6 +75,6 @@ function createObject() {
   }
 }
 const style = {
-  input: 'text-lg w-full rounded-full px-5 py-2 focus-visible:outline-0 focus-visible:ring-0 transition'
+    input: 'text-lg w-full rounded-full px-4 py-2 transition'
 }
 </script>
